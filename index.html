@@ -85,6 +85,35 @@ body.step-dark-mode .text-slate-500, body.step-dark-mode .text-gray-500, body.st
 body.step-dark-mode input, body.step-dark-mode select, body.step-dark-mode textarea { background:#0f172a !important; color:#f8fafc !important; border-color:#475569 !important; }
 body.step-dark-mode .bg-slate-50, body.step-dark-mode .bg-gray-50 { background:#111827 !important; }
 
+
+/* Seamless mobile learning workspace and exam layout */
+@media (max-width: 767px) {
+  .workspace-topbar { position: static !important; top: auto; box-shadow: none; backdrop-filter: none; }
+  .workspace-main { background: var(--step-page); }
+  #page-test-exam { background: var(--step-page); }
+  #page-test-exam > .max-w-7xl { max-width: none; padding-left: 0 !important; padding-right: 0 !important; padding-top: 0 !important; }
+  #stepEntranceExam { margin-top: 0 !important; padding: 0 !important; }
+  #stepEntranceExam .exam-shell {
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    background: transparent !important; padding: 0 !important; overflow: visible !important;
+  }
+  #stepEntranceExam .exam-hero {
+    margin: 0 12px 18px !important; border-radius: 0 0 24px 24px !important;
+    padding: 25px 22px 28px !important;
+  }
+  #stepEntranceExam .exam-hero > div { max-width: none; }
+  #stepEntranceExam #examIntro,
+  #stepEntranceExam #examInstructions,
+  #stepEntranceExam .exam-question-card,
+  #stepEntranceExam .exam-result-card {
+    margin-left: 16px; margin-right: 16px;
+  }
+  #stepEntranceExam .exam-stat { min-width: 0; }
+}
+@media (min-width: 768px) {
+  #page-test-exam > .max-w-7xl { padding-top: 2rem; }
+}
+
 </style>
 
 <!-- Firebase (compat) -->
@@ -107,8 +136,6 @@ body { font-family:'Inter',sans-serif; }
 .hero-wave { position:absolute; left:0; right:0; bottom:-1px; line-height:0; pointer-events:none; }
 .hero-wave svg { display:block; width:100%; height:auto; }
 
-/* ===== Floating pill nav ===== */
-.nav-shell { border-radius:0 0 1.75rem 1.75rem; box-shadow:0 6px 24px rgba(13,71,161,.10); }
 .card-hover { transition:all .3s cubic-bezier(.4,0,.2,1); }
 .card-hover:hover { transform:translateY(-8px); box-shadow:0 20px 25px -5px rgb(27 78 245/.15),0 8px 10px -6px rgb(27 78 245/.1); }
 .nav-link { position:relative; }
@@ -314,75 +341,6 @@ body { font-family:'Inter',sans-serif; }
 .timeline-line { width:2px; flex:1; background:#e5e7eb; margin:2px 0 2px 6px; }
 .notif-item { display:flex; gap:12px; align-items:flex-start; padding:14px 16px; background:#F9FAFB; border-radius:16px; margin-bottom:10px; font-size:13.5px; color:#374151; }
 
-/* ===== Unified type scale: Body 15px · Heading 20px · Title 32px ===== */
-body { font-size:15px; line-height:1.6; }
-input, select, textarea, button { font-size:15px; }
-h1:not(#_), h2:not(#_) { font-size:32px !important; line-height:1.2 !important; }
-h3:not(#_), h4:not(#_), h5:not(#_) { font-size:20px !important; line-height:1.35 !important; }
-/* Body */
-.text-xs:not(#_), .text-sm:not(#_), .text-base:not(#_), .text-\[10px\]:not(#_), .text-\[11px\]:not(#_), .text-\[17px\]:not(#_),
-p.text-lg:not(#_), p.text-xl:not(#_), button.text-lg:not(#_), a.text-lg:not(#_),
-.divider:not(#_), .error-msg:not(#_), .google-btn:not(#_), .skip-btn:not(#_), .next-btn:not(#_), .onb-page p:not(#_),
-.match-btn:not(#_), .match-badge:not(#_), .benefit-chip:not(#_), .wiz-subtitle:not(#_), .wiz-field label:not(#_),
-.wiz-field input:not(#_), .wiz-field select:not(#_), .wiz-group-label:not(#_), .pill-option:not(#_), .pill-toggle:not(#_),
-.wiz-back-btn:not(#_), .wiz-next-btn:not(#_), .likert-clean-text:not(#_), .likert-clean-label:not(#_), .likert-endlabel:not(#_),
-.cat-row-head:not(#_), .doc-item:not(#_), .score-pill:not(#_), .readiness-suggest-card:not(#_), .notif-item:not(#_),
-.exam-option:not(#_), .exam-option-letter:not(#_), .exam-nav-btn:not(#_), .exam-primary:not(#_), .exam-secondary:not(#_),
-.exam-ghost:not(#_), .exam-passage:not(#_) { font-size:15px !important; line-height:1.55 !important; }
-/* Heading */
-.text-lg:not(#_), .text-xl:not(#_), .md\:text-xl:not(#_), .wiz-title:not(#_) { font-size:20px !important; line-height:1.35 !important; }
-/* Title / display */
-.text-2xl:not(#_), .text-3xl:not(#_), .text-4xl:not(#_), .text-5xl:not(#_), .text-6xl:not(#_),
-.sm\:text-4xl:not(#_), .sm\:text-5xl:not(#_), .md\:text-4xl:not(#_), .md\:text-5xl:not(#_), .md\:text-6xl:not(#_) { font-size:32px !important; line-height:1.2 !important; }
-/* h3/h4/h5 always stay at heading size, even if they carry a bigger utility class */
-h3[class]:not(#_), h4[class]:not(#_), h5[class]:not(#_) { font-size:20px !important; line-height:1.35 !important; }
-.likert-clean-label { min-height:2.6em; max-width:84px; }
-.radar-wrap svg { max-width:420px; margin:0 auto; display:block; }
-.hover\:bg-primary-700:hover { filter:brightness(1.2); }
-</style>
-
-<style id="step-interface-polish">
-/* =========================================================
-   STEP INTERFACE POLISH
-   Restores the missing workspace layout and applies a
-   consistent, responsive blue-and-white visual system.
-   ========================================================= */
-:root {
-  --step-ink: #14233f;
-  --step-muted: #687891;
-  --step-line: #e5ebf4;
-  --step-page: #f4f7fc;
-  --step-card: #ffffff;
-  --step-blue: #0d47a1;
-  --step-sky: #2196f3;
-  --step-shadow: 0 10px 28px rgba(28, 55, 100, .06);
-}
-html { scroll-behavior: smooth; }
-body {
-  background: var(--step-page) !important;
-  color: var(--step-ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-#mainApp { min-height: 100vh; background: var(--step-page); }
-.app-page { min-height: calc(100vh - 76px); }
-.app-page.active { animation: stepPageIn .22s ease both; }
-@keyframes stepPageIn { from { opacity: .72; transform: translateY(4px); } to { opacity: 1; transform: none; } }
-
-/* Shared top navigation for non-overview pages */
-.nav-shell {
-  position: sticky;
-  top: 0;
-  z-index: 80;
-  border-radius: 0 0 20px 20px;
-  background: rgba(255,255,255,.96) !important;
-  border-bottom: 1px solid rgba(225,233,244,.9);
-  box-shadow: 0 5px 22px rgba(27,54,96,.07);
-  backdrop-filter: blur(14px);
-}
-.nav-shell > div:first-child { min-height: 68px; }
-.nav-link { padding: 8px 0; color: #465570 !important; transition: color .2s ease; }
-.nav-link:hover, .nav-link.active { color: var(--step-blue) !important; }
 .profile-avatar { background-color: #0d9488; border-color: #d8f3ef; }
 
 /* Overview desktop shell */
@@ -649,9 +607,6 @@ body {
 }
 #page-analytics #analyticsSubjectBreakdown > div:last-child { border-bottom: 0; }
 
-/* Legacy top navigation is hidden; the shared sidebar is the workspace navigation. */
-#mainApp > .nav-shell { display: none !important; }
-
 /* Tablet and mobile layout */
 @media (max-width: 900px) {
   .workspace-layout { grid-template-columns: 210px minmax(0,1fr); }
@@ -721,9 +676,6 @@ body {
 }
 #mainApp > .workspace-sidebar .workspace-nav.active i { color: #fff; }
 .sidebar-toggle, .sidebar-backdrop { display: none; }
-
-/* The app's old horizontal navigation is intentionally removed. */
-#mainApp > .nav-shell { display: none !important; }
 
 @media (max-width: 900px) {
   #mainApp > .workspace-sidebar { width: 220px; padding: 22px 13px 18px; }
@@ -1061,17 +1013,21 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
           <div class="w-11 h-11 rounded-2xl bg-white/95 grid place-items-center p-1.5 shadow-sm flex-shrink-0"><img src="img/LOGO.png" alt="STEP logo" class="w-full h-full object-contain"></div>
           <div><div class="text-xl font-extrabold tracking-tight">STEP</div><div class="text-[10px] uppercase tracking-[.2em] text-blue-100">Student workspace</div></div>
         </div>
-        <div class="workspace-label">WORKSPACE</div>
-        <button class="workspace-nav" data-section="overview" onclick="goPage('overview')"><i class="fa-solid fa-grid-2"></i> Overview</button>
-        <button class="workspace-nav" data-section="catalog" onclick="goPage('catalog')"><i class="fa-solid fa-award"></i> Scholarships</button>
-        <button class="workspace-nav" data-section="matching" onclick="goPage('matching')"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Matching</button>
-        <button class="workspace-nav" data-section="test-exam" onclick="goPage('test-exam');openEntranceExam()"><i class="fa-solid fa-clipboard-check"></i> Test Exam</button>
-        <button class="workspace-nav" data-section="readiness" onclick="goPage('readiness')"><i class="fa-solid fa-award"></i> Scholarship Readiness Checker</button>
-        <button class="workspace-nav" data-section="reviewers" onclick="goPage('reviewers')"><i class="fa-solid fa-book-open"></i> Free Reviewers</button>
-        <button class="workspace-nav" data-section="analytics" onclick="goPage('analytics')"><i class="fa-solid fa-chart-line"></i> Performance</button>
+        <div class="workspace-label">DISCOVER</div>
         <button class="workspace-nav" data-section="career" onclick="goPage('career')"><i class="fa-solid fa-compass"></i> Career Guide</button>
+        <button class="workspace-nav" data-section="catalog" onclick="goPage('catalog')"><i class="fa-solid fa-award"></i> Scholarships</button>
+
+        <div class="workspace-label mt-5">PREPARE</div>
+        <button class="workspace-nav" data-section="matching" onclick="goPage('matching')"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Matching</button>
+        <button class="workspace-nav" data-section="readiness" onclick="goPage('readiness')"><i class="fa-solid fa-award"></i> Readiness Checker</button>
+        <button class="workspace-nav" data-section="reviewers" onclick="goPage('reviewers')"><i class="fa-solid fa-book-open"></i> Reviewers</button>
+        <button class="workspace-nav" data-section="test-exam" onclick="goPage('test-exam')"><i class="fa-solid fa-clipboard-check"></i> Test Exam</button>
+
+        <div class="workspace-label mt-5">TRACK</div>
+        <button class="workspace-nav" data-section="analytics" onclick="goPage('analytics')"><i class="fa-solid fa-chart-line"></i> Performance</button>
+        <button class="workspace-nav" data-section="overview" onclick="goPage('overview')"><i class="fa-solid fa-grid-2"></i> Overview</button>
         <div class="mt-auto pt-8">
-          <button class="workspace-nav mt-5" data-section="profile" onclick="goPage('profile')"><i class="fa-solid fa-user"></i> My Profile</button>
+          <button class="workspace-nav mt-5" data-section="profile" onclick="goPage('profile')"><i class="fa-solid fa-user"></i> Profile</button>
           <button class="workspace-nav" onclick="doLogout()"><i class="fa-solid fa-right-from-bracket"></i> Sign out</button>
         </div>
       </aside>
@@ -1085,8 +1041,6 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
 
   <!-- ===== STUDENT WORKSPACE OVERVIEW ===== -->
   <div class="app-page" id="page-overview">
-    <div class="workspace-layout">
-
       <main class="workspace-main">
         <header class="workspace-topbar">
           <div><div class="text-[10px] uppercase tracking-[.22em] text-primary-600 font-bold">Student learning workspace</div><div class="font-bold text-lg text-slate-900 flex items-center gap-2"><i class="fa-solid fa-grid-2 text-primary-600"></i> Overview</div></div>
@@ -1097,6 +1051,14 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
             <div><div class="text-xs uppercase tracking-[.18em] text-primary-600 font-bold">Your academic overview</div><h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">Welcome back, <span id="overviewGreeting">Student</span>.</h1><p class="text-sm text-slate-500 mt-2">Here’s what needs your attention today.</p></div>
             <button onclick="goPage('test-exam');openEntranceExam()" class="px-5 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-sm font-bold shadow-md"><i class="fa-solid fa-play mr-2"></i>Start Test Exam</button>
           </div>
+          <div id="overviewEmptyState" class="hidden workspace-card my-8 p-7 sm:p-10 text-center">
+            <div class="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-2xl bg-blue-50 text-primary-700 text-2xl"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="workspace-eyebrow">YOUR JOURNEY STARTS HERE</div>
+            <h2 class="mt-2 text-2xl font-extrabold text-slate-900">Get started with STEP</h2>
+            <p class="mx-auto mt-3 max-w-xl text-sm text-slate-500">Take your first practice exam to see your academic progress, subject strengths, and areas to improve. Your overview will grow as you complete assessments.</p>
+            <button onclick="goPage('test-exam');openEntranceExam()" class="mt-6 inline-flex items-center justify-center rounded-xl bg-primary-600 px-6 py-3 text-sm font-bold text-white shadow-md"><i class="fa-solid fa-play mr-2"></i>Start practice exam</button>
+          </div>
+          <div id="overviewDashboardContent">
           <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
             <div class="workspace-stat"><div class="stat-icon bg-blue-100 text-blue-700"><i class="fa-solid fa-file-circle-check"></i></div><div class="text-xs text-slate-500 mt-4">Exam attempts</div><div class="text-3xl font-extrabold text-slate-900" id="dashAttempts">0</div><div class="text-xs text-slate-400 mt-1">Completed assessments</div></div>
             <div class="workspace-stat"><div class="stat-icon bg-cyan-100 text-cyan-700"><i class="fa-solid fa-chart-pie"></i></div><div class="text-xs text-slate-500 mt-4">Average score</div><div class="text-3xl font-extrabold text-slate-900" id="dashAverage">—</div><div class="text-xs text-slate-400 mt-1">Across completed exams</div></div>
@@ -1126,9 +1088,9 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
               <button onclick="goPage('reviewers')" class="quick-tile"><i class="fa-solid fa-cloud-arrow-down"></i><span>Download reviewers</span></button>
             </div></div>
           </div>
+          </div><!-- /overviewDashboardContent -->
         </section>
       </main>
-    </div>
   </div>
 
   <!-- ===== FREE REVIEWER LIBRARY ===== -->
@@ -1156,139 +1118,6 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
     </section>
   </div>
 
-  <!-- ===== PAGE: DASHBOARD ===== -->
-  <div class="app-page" id="page-dashboard">
-    <header class="hero-bg text-white min-h-[90dvh] flex items-center">
-      <div class="hero-blob" style="width:340px;height:340px;top:-100px;left:-80px;"></div>
-      <div class="hero-blob" style="width:220px;height:220px;bottom:60px;left:8%;opacity:.1;"></div>
-      <div class="hero-blob" style="width:180px;height:180px;top:18%;right:6%;opacity:.12;"></div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-32 relative z-10">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="space-y-8">
-            <div class="inline-flex items-center gap-2 bg-cream-100/90 text-primary-700 px-4 py-2 rounded-full text-sm font-medium shadow">
-              <div class="w-2 h-2 bg-primary-600 rounded-full animate-pulse"></div>
-              Now serving SHS Students
-            </div>
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tighter">
-              Unlock Your Future.<br><span class="text-cream-100">Scholarships & Careers</span> Await.
-            </h1>
-            <p class="text-lg md:text-xl text-primary-100 max-w-md">Scholarship matching and career guidance for Filipino Senior High School students.</p>
-            <div class="flex flex-col sm:flex-row gap-4">
-              <button onclick="goPage('matching')" class="px-8 py-4 bg-cream-100 text-primary-700 hover:bg-white font-bold text-lg rounded-full shadow-lg hover:shadow-[0_10px_30px_rgba(227,242,253,.35)] transition">Match me now →</button>
-              <button onclick="goPage('career')" class="px-8 py-4 border-2 border-white/70 hover:bg-white/10 font-semibold text-lg rounded-full transition"><i class="fas fa-play"></i> Take Career Test</button>
-            </div>
-            <div class="flex flex-wrap gap-2 pt-2">
-              <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/15 border border-white/25">🎓 STEM</span>
-              <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/15 border border-white/25">🩺 Health</span>
-              <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/15 border border-white/25">💼 Business</span>
-              <span class="px-4 py-1.5 rounded-full text-xs font-semibold bg-white/15 border border-white/25">🎨 Arts</span>
-            </div>
-          </div>
-          <div class="hidden md:block relative">
-            <div class="bg-white/10 backdrop-blur-xl p-8 rounded-[2rem] shadow-2xl border border-white/20">
-              <div class="bg-white rounded-[1.5rem] p-6 text-gray-900 shadow-inner">
-                <div class="flex justify-between items-start mb-6">
-                  <div><div class="text-sm text-gray-500">Match Score</div><div class="text-5xl font-bold text-primary-600">92%</div></div>
-                  <div class="px-4 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">Highly Qualified</div>
-                </div>
-                <div class="space-y-4">
-                  <div class="flex justify-between items-center text-sm"><span class="text-gray-600">DOST-SEI Scholarship</span><span class="font-semibold text-emerald-600">Qualified ✓</span></div>
-                  <div class="h-2 bg-gray-200 rounded-full overflow-hidden"><div class="h-full w-[92%] bg-gradient-to-r from-primary-500 to-emerald-500"></div></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="hero-wave">
-        <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
-          <path d="M0,48 C220,90 380,4 620,32 C860,60 1040,8 1440,44 L1440,90 L0,90 Z" fill="#E3F2FD"></path>
-        </svg>
-      </div>
-    </header>
-
-    <div class="bg-[#E3F2FD] py-6">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-6 opacity-75 text-sm">
-          <div class="flex items-center gap-3 font-medium"><i class="fas fa-check-circle text-emerald-500"></i><span>CHED</span></div>
-          <div class="flex items-center gap-3 font-medium"><i class="fas fa-check-circle text-emerald-500"></i><span>DOST</span></div>
-          <div class="flex items-center gap-3 font-medium"><i class="fas fa-check-circle text-emerald-500"></i><span>TESDA</span></div>
-          <div class="flex items-center gap-3 font-medium"><i class="fas fa-check-circle text-emerald-500"></i><span>Private Foundations</span></div>
-        </div>
-      </div>
-    </div>
-
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="text-center mb-16">
-          <div class="text-primary-600 font-semibold tracking-widest text-sm mb-3">POWERFUL FEATURES</div>
-          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Everything you need in one place</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="card-hover bg-white border border-gray-100 p-8 rounded-3xl group">
-            <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">🔍</div>
-            <h3 class="text-2xl font-semibold mb-3">Scholarship Checker</h3>
-            <p class="text-gray-600">Instantly know which scholarships you qualify for based on your grades, income, and profile.</p>
-          </div>
-          <div class="card-hover bg-white border border-gray-100 p-8 rounded-3xl group">
-            <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📊</div>
-            <h3 class="text-2xl font-semibold mb-3">Career Assessment</h3>
-            <p class="text-gray-600">Discover college courses and careers that match your strengths and passions.</p>
-          </div>
-          <div class="card-hover bg-white border border-gray-100 p-8 rounded-3xl group">
-            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">📈</div>
-            <h3 class="text-2xl font-semibold mb-3">Scholarship Readiness</h3>
-            <p class="text-gray-600">Track missing requirements and get personalized steps to boost your chances.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-          <div>
-            <div class="uppercase text-primary-600 text-sm font-semibold tracking-widest">Featured Opportunities</div>
-            <h2 class="text-3xl sm:text-4xl font-bold">Scholarships You Might Qualify For</h2>
-          </div>
-          <a href="#" onclick="goPage('catalog');return false;" class="text-primary-600 hover:text-primary-700 font-medium flex items-center gap-2 whitespace-nowrap">View all scholarships <span class="text-xl">→</span></a>
-        </div>
-        <div id="featuredGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-      </div>
-    </section>
-
-    <section class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6">
-        <div class="grid lg:grid-cols-12 gap-16 items-center">
-          <div class="lg:col-span-5">
-            <div class="sticky top-24">
-              <span class="px-4 py-2 bg-primary-100 text-primary-700 text-sm font-medium rounded-3xl">NEW</span>
-              <h2 class="text-3xl sm:text-4xl font-bold mt-4 leading-tight">Not sure what course to take?</h2>
-              <p class="mt-6 text-lg text-gray-600">Our Career Assessment helps you discover the best college programs based on your interests, skills, and SHS strand.</p>
-              <button onclick="goPage('career')" class="mt-10 px-8 py-4 bg-primary-600 text-white font-semibold rounded-3xl inline-flex items-center gap-3"><i class="fas fa-brain"></i> Start Career Assessment</button>
-            </div>
-          </div>
-          <div class="lg:col-span-7">
-            <div class="grid grid-cols-2 gap-6">
-              <div class="bg-gradient-to-br from-primary-50 to-white p-8 rounded-3xl border">
-                <div class="text-6xl mb-4">💻</div>
-                <div class="font-semibold text-xl">Computer Science</div>
-                <div class="text-sm text-gray-500 mt-1">High demand • Excellent ROI</div>
-                <div class="mt-8 text-xs leading-relaxed opacity-75">Perfect for analytical minds who love technology and problem solving.</div>
-              </div>
-              <div class="bg-gradient-to-br from-emerald-50 to-white p-8 rounded-3xl border">
-                <div class="text-6xl mb-4">🩺</div>
-                <div class="font-semibold text-xl">Nursing</div>
-                <div class="text-sm text-gray-500 mt-1">Stable career • Global opportunities</div>
-                <div class="mt-8 text-xs leading-relaxed opacity-75">Ideal if you have compassion and strong science background.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
   <!-- ===== PAGE: CATALOG ===== -->
   <div class="app-page" id="page-catalog">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8">
@@ -1301,7 +1130,7 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
             2026 Cycle Open
           </div>
           <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">Find Your Perfect Scholarship</h1>
-          <p class="text-primary-100 text-lg max-w-md">Over 25 government & private scholarships for Filipino students. Merit, need-based, and STEM-focused opportunities.</p>
+          <p class="text-primary-100 text-lg max-w-md">Over 50 government & private scholarships for Filipino students. Merit, need-based, and STEM-focused opportunities.</p>
         </div>
         <div class="hero-wave">
           <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
@@ -1311,9 +1140,9 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
       </div>
 
       <div class="bg-white rounded-3xl p-4 mb-6 border border-gray-100 shadow-sm flex items-center gap-4">
-        <i class="fa-solid fa-search text-gray-400 ml-2"></i>
-        <input id="searchInput" type="text" placeholder="Search scholarships by name, provider, or field..." class="flex-1 outline-none text-sm">
-        <button onclick="toggleFilter()" class="px-4 py-2 text-sm text-gray-600 hover:text-primary-600 flex items-center gap-2"><i class="fa-solid fa-filter"></i> Filters</button>
+        <i class="fa-solid fa-search text-gray-400 ml-2 shrink-0"></i>
+        <input id="searchInput" type="text" placeholder="Search scholarships by name, provider, or field..." class="flex-1 min-w-0 outline-none text-sm">
+        <button onclick="toggleFilter()" class="px-4 py-2 text-sm text-gray-600 hover:text-primary-600 flex items-center gap-2 whitespace-nowrap shrink-0"><i class="fa-solid fa-filter"></i> Filters</button>
       </div>
 
       <div id="filterPanel" class="hidden bg-white rounded-3xl p-6 mb-8 border border-gray-100 shadow-sm">
@@ -1841,7 +1670,7 @@ body { overflow-x: hidden; background: var(--step-page-bg) !important; color: va
       <div class="bg-white rounded-3xl border border-gray-100 shadow p-6 mt-5 text-left space-y-5">
         <div><label for="profileNameInput" class="block text-sm font-semibold text-gray-700 mb-2">Display name</label><div class="flex gap-2"><input id="profileNameInput" maxlength="40" class="min-w-0 flex-1 px-4 py-3 border rounded-xl" placeholder="Your name"><button type="button" onclick="saveProfileName()" class="px-4 py-3 rounded-xl bg-primary-600 text-white font-semibold">Save name</button></div><p id="profileNameStatus" class="text-xs mt-2 text-gray-500"></p></div>
         <div><div class="block text-sm font-semibold text-gray-700 mb-2">Signed-in Gmail / email</div><div id="profileEmail" class="px-4 py-3 rounded-xl bg-gray-50 text-gray-700 break-all">Loading…</div><p class="text-xs text-gray-500 mt-2">This is the email address currently authenticated with Firebase.</p></div>
-        <div><label for="profileNewPassword" class="block text-sm font-semibold text-gray-700 mb-2">Change password</label><input id="profileNewPassword" type="password" autocomplete="new-password" minlength="6" class="w-full px-4 py-3 border rounded-xl" placeholder="New password (at least 6 characters)"><button type="button" onclick="changeProfilePassword()" class="mt-3 px-4 py-3 rounded-xl border border-primary-200 text-primary-700 font-semibold">Update password</button><p id="profilePasswordStatus" class="text-xs mt-2 text-gray-500">Google sign-in accounts may need to set a password through Google instead.</p></div>
+        <div id="passwordSection"><label for="profileNewPassword" class="block text-sm font-semibold text-gray-700 mb-2">Change password</label><input id="profileNewPassword" type="password" autocomplete="new-password" minlength="6" class="w-full px-4 py-3 border rounded-xl" placeholder="New password (at least 6 characters)"><button type="button" onclick="changeProfilePassword()" class="mt-3 px-4 py-3 rounded-xl border border-primary-200 text-primary-700 font-semibold">Update password</button><p id="profilePasswordStatus" class="text-xs mt-2 text-gray-500">Google sign-in accounts may need to set a password through Google instead.</p></div>
         <div class="flex flex-wrap items-center justify-between gap-3 border-t pt-5"><div><div class="font-semibold text-gray-800">Dark mode</div><p class="text-xs text-gray-500">Change the appearance on this device.</p></div><label class="inline-flex items-center gap-3"><span class="text-sm">Off / On</span><input id="darkModeToggle" type="checkbox" class="w-5 h-5" onchange="setStepDarkMode(this.checked)"></label></div>
         <div class="flex flex-wrap gap-3 border-t pt-5"><button onclick="doLogout()" class="px-6 py-3 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl">Sign out</button></div>
       </div>
@@ -1879,6 +1708,11 @@ function closeStepSidebar(){
   app?.classList.remove('sidebar-open');
   toggle?.setAttribute('aria-expanded', 'false');
 }
+document.addEventListener('keydown', event => {
+  if(event.key === 'Escape' && document.getElementById('mainApp')?.classList.contains('sidebar-open')) {
+    closeStepSidebar();
+  }
+});
 
 function goPage(name){
   appPages.forEach(p=>p.classList.remove('active'));
@@ -2138,6 +1972,9 @@ function loadProfile(){
   const uname = localStorage.getItem('step_username_'+user.uid) || user.displayName || 'Student';
   document.getElementById('profileName').textContent = uname;
   document.getElementById('profileEmail').textContent = user.email || 'No email available';
+  const passwordSection=document.getElementById('passwordSection');
+  const isGoogleAccount=(user.providerData||[]).some(provider=>provider.providerId==='google.com');
+  if(passwordSection) passwordSection.style.display=isGoogleAccount?'none':'';
   const nameInput=document.getElementById('profileNameInput');if(nameInput)nameInput.value=uname;
   const darkToggle=document.getElementById('darkModeToggle');if(darkToggle)darkToggle.checked=document.body.classList.contains('step-dark-mode');
   loadAvatarForCurrentUser();
@@ -2221,13 +2058,14 @@ let SCHOLARSHIPS = [
     "provider": "Department of Science and Technology – Science Education Institute (DOST-SEI)",
     "type": "Merit-Based Scholarship",
     "category": "Government",
-    "amount": "Up to ₱40,000/year + ₱10,000",
-    "eligibility": "The DOST-SEI Merit Scholarship Program, formerly known as the NSDB or NSTA Scholarship under RA No. 2067, is awarded to students with high aptitude in science and mathematics and a",
-    "deadline": "TBA",
-    "description": "The DOST-SEI Merit Scholarship Program, formerly known as the NSDB or NSTA Scholarship under RA No. 2067, is awarded to students with high aptitude in science and mathematics and are willing to pursue careers in the fields of science and technology. Family income is not considered.",
-    "website": "https://dost.gov.ph/products-and-services/s-t-scholarships",
-    "benefits": "Full Tuition Fee Coverage, Learning Materials Allowance, Transportation Allowance, Living Allowance, Uniform/Clothing Allowance, Health Insurance, Accident Insurance, Thesis Allowance",
-    "min_gwa": 0.9,
+    "amount": "Up to ₱40,000/year tuition (private HEIs) + ₱8,000/month living allowance + other allowances",
+    "eligibility": "Natural-born Filipino citizen; graduating Grade 12 student (STEM strand all students, or Non-STEM top 5% of class) or past Grade 12 graduate not yet enrolled in college; good moral character and health; intention to enroll in DOST-SEI priority S&T programs at eligible HEIs.",
+    "deadline": "Closed for AY 2026-2027 (previous cycle deadline around November 2025 / September 2026 for some references); check official site for next cycle (typically opens mid-year)",
+    "description": "The DOST-SEI Merit Scholarship Program is awarded to students with high aptitude in science and mathematics who are willing to pursue careers in science and technology. Family income is not a primary consideration for Merit.",
+    "website": "https://science-scholarships.ph/",
+    "application_link": "https://ugs.science-scholarships.ph/",
+    "benefits": "Tuition & other school fees (up to ₱40,000/year for private HEIs), Learning Materials/Connectivity Allowance (₱10,000/year), Monthly Living Allowance (₱8,000), Transportation Allowance (actual for those studying outside home province), Clothing Allowance (₱1,000 first semester of first year), Group Health & Accident Insurance, Thesis Allowance (₱10,000), Graduation Allowance (₱1,000)",
+    "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
@@ -2236,12 +2074,20 @@ let SCHOLARSHIPS = [
       "Bachelor in Mathematics Education",
       "Bachelor in Science Education with Specialization in Biology, Chemistry and Physics",
       "Bachelor in Technology and Livelihood Education with Specialization in Information and Communications Technology",
-      "Bachelor of Elementary Education in Mathematics",
-      "Bachelor of Elementary Education in Science and Health",
-      "Bachelor of Library and Information Science",
-      "Bachelor of Sports Science"
+      "BS Applied Mathematics",
+      "BS Applied Physics",
+      "BS Biology",
+      "BS Chemistry",
+      "BS Computer Science",
+      "BS Information Technology",
+      "Various Engineering programs (Civil, Electrical, Electronics, Mechanical, Chemical, Industrial, Computer, Agricultural & Biosystems, etc.)",
+      "BS Data Science",
+      "BS Artificial Intelligence",
+      "BS Cybersecurity",
+      "Other DOST-identified priority S&T programs (full list on official site)"
     ],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 2,
@@ -2249,14 +2095,15 @@ let SCHOLARSHIPS = [
     "provider": "Department of Science and Technology – Science Education Institute (DOST-SEI)",
     "type": "Need-Based Scholarship",
     "category": "Government",
-    "amount": "Up to ₱40,000/year + ₱10,000",
-    "eligibility": "Republic Act No. 7687, also known as the “Science and Technology Scholarship Act of 1994”, provides scholarships to talented and deserving students whose families’ socio-economic s",
-    "deadline": "TBA",
-    "description": "Republic Act No. 7687, also known as the “Science and Technology Scholarship Act of 1994”, provides scholarships to talented and deserving students whose families’ socio-economic status does not exceed the set cut-off values of certain indicators. Qualifiers must pursue priority fields of study in the basic sciences, engineering, other applied sciences, and science and mathematics teaching.",
-    "website": "https://dost.gov.ph/products-and-services/s-t-scholarships",
-    "benefits": "Full Tuition Fee Coverage, Learning Materials Allowance, Transportation Allowance, Living Allowance, Uniform/Clothing Allowance, Health Insurance, Accident Insurance, Thesis Allowance, Graduation Allowance",
-    "min_gwa": 0.83,
-    "max_income": 300000,
+    "amount": "Up to ₱40,000/year tuition (private HEIs) + ₱8,000/month living allowance + other allowances",
+    "eligibility": "Natural-born Filipino citizen; graduating Grade 12 (STEM all or Non-STEM top 5%) or past Grade 12 graduate not yet in college; family socio-economic status within DOST-SEI cut-off indicators; intention to enroll in priority S&T programs.",
+    "deadline": "Closed for AY 2026-2027; check official site for next cycle",
+    "description": "Republic Act No. 7687 (Science and Technology Scholarship Act of 1994) provides scholarships to talented and deserving students whose families’ socio-economic status does not exceed set cut-off values. Qualifiers must pursue priority fields in basic sciences, engineering, applied sciences, and science/mathematics teaching.",
+    "website": "https://science-scholarships.ph/",
+    "application_link": "https://ugs.science-scholarships.ph/",
+    "benefits": "Same privileges as Merit Scholarship: Tuition & other school fees (up to ₱40,000/year private), Learning Materials/Connectivity (₱10,000/year), Monthly Living Allowance (₱8,000), Transportation, Clothing, Insurance, Thesis (₱10,000), Graduation (₱1,000)",
+    "min_gwa": null,
+    "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [
@@ -2264,59 +2111,67 @@ let SCHOLARSHIPS = [
       "Bachelor in Mathematics Education",
       "Bachelor in Science Education with Specialization in Biology, Chemistry and Physics",
       "Bachelor in Technology and Livelihood Education with Specialization in Information and Communications Technology",
-      "Bachelor of Elementary Education in Mathematics",
-      "Bachelor of Elementary Education in Science and Health",
-      "Bachelor of Library and Information Science",
-      "Bachelor of Sports Science"
+      "Various Engineering, BS Computer Science, BS Information Technology, BS Data Science, and other DOST priority S&T programs (full list on official site)"
     ],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 3,
     "title": "TES – Tertiary Education Subsidy",
     "provider": "Unified Student Financial Assistance System for Tertiary Education (UniFAST)",
-    "type": "Need-Based Scholarship",
+    "type": "Need-Based Scholarship / Grant-in-Aid",
     "category": "Government",
-    "amount": "₱20,000 + ₱27,000",
-    "eligibility": "The Tertiary Education Subsidy (TES) is a government grant-in-aid program under Republic Act  No. 10931 (Universal Access to Quality Tertiary Education Act). It provides financial ",
-    "deadline": "TBA",
-    "description": "The Tertiary Education Subsidy (TES) is a government grant-in-aid program under Republic Act  No. 10931 (Universal Access to Quality Tertiary Education Act). It provides financial assistance to support the full or partial cost of tertiary education of priority Filipino students enrolled in  eligible higher education institutions.",
+    "amount": "₱20,000/year (SUCs/LUCs) or ₱27,000/year (private HEIs); additional amounts for certain equity categories",
+    "eligibility": "Filipino citizen; meets admission and retention policies of the HEI; no previous undergraduate degree; not overstaying in the program; prioritization for Listahanan / 4Ps households, Indigenous Peoples, PWDs, solo parent dependents, and other special equity groups as per current guidelines.",
+    "deadline": "No single nationwide deadline – apply through the HEI’s UniFAST/TES focal person during the school’s enrollment window for the relevant academic year",
+    "description": "The Tertiary Education Subsidy (TES) is a government grant-in-aid program under Republic Act No. 10931 (Universal Access to Quality Tertiary Education Act). It supports the full or partial cost of tertiary education of priority Filipino students enrolled in eligible higher education institutions.",
     "website": "https://www.unifast.gov.ph/",
-    "benefits": "Tuition Subsidy, Tuition Subsidy, One-time Cash Grant, Board/Licensure Examination Support, Scholarship Renewal Support",
+    "application_link": "https://www.unifast.gov.ph/tes.html",
+    "benefits": "Cash grant/subsidy for tuition and other education costs (₱20,000 SUC/LUC or ₱27,000 private HEI per academic year under recent guidelines); additional support possible for PWDs and board/licensure exam takers; subject to prioritization and fund availability",
     "min_gwa": null,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Ongoing – apply via participating HEI",
+    "active": true
   },
   {
     "id": 4,
     "title": "SM Foundation College Scholarship",
-    "provider": "SM Foundation, Inc. (Founded by Henry Sy, Sr.)",
+    "provider": "SM Foundation, Inc.",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "Full",
-    "eligibility": "A scholarship program that provides financial assistance to financially challenged but academically deserving Filipino students who are entering their first year of college. The pr",
-    "deadline": "TBA",
-    "description": "A scholarship program that provides financial assistance to financially challenged but academically deserving Filipino students who are entering their first year of college. The program supports scholars through educational funding, leadership development, and career opportunities within the SM Group.",
+    "amount": "Full tuition and other school fees + monthly stipend",
+    "eligibility": "Incoming freshman / Grade 12 graduate from public or private schools in covered areas (or ALS completer); private school applicants must have DepEd voucher and completed Grade 10 in public high school; GWA of at least 92% (or equivalent) for Grade 12 1st semester; total household income at most ₱250,000 per year; must pursue priority courses at partner schools.",
+    "deadline": "Closed for SY 2026-2027 (previous cycle February 1–28 or March 31, 2026 depending on announcement); check official site for next cycle",
+    "description": "Scholarship program providing financial assistance to financially challenged but academically deserving Filipino students entering first year of college. Supports educational funding, leadership development, and career opportunities within the SM Group.",
     "website": "https://www.sm-foundation.org/what_we_do/college-scholarship-program/",
-    "benefits": "Full Tuition Fee Coverage, Living Allowance, Leadership Development Program, Mentoring Program, Internship Opportunity, Employment Opportunity, Scholarship Renewal Support",
+    "application_link": "https://scholarship.sm-foundation.org/",
+    "benefits": "Full tuition and other school fees, monthly stipend, part-time job opportunities during semestral and Christmas breaks, enrichment programs, priority employment opportunities within the SM Group upon graduation",
     "min_gwa": 0.92,
     "max_income": 250000,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [
+      "BS Accountancy",
+      "BS Accounting Information Systems / Accounting Technology",
+      "BS Digital Marketing",
+      "BS Internal Auditing",
+      "BSBA Financial Management / Management Accounting",
       "BS Civil Engineering",
-      "BS Mechanical Engineering",
-      "BS Electrical Engineering",
-      "BS Electronics Engineering",
-      "BS Industrial Engineering",
       "BS Computer Engineering",
-      "BS Chemical Engineering",
-      "BS Information Technology"
+      "BS Electrical Engineering",
+      "BS Electronics Engineering / Electronics and Communications Engineering",
+      "BS Mechanical Engineering",
+      "BS Computer Science",
+      "BS Information Technology",
+      "Bachelor of Elementary Education",
+      "Bachelor of Secondary Education (selected majors)"
     ],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 5,
@@ -2324,27 +2179,20 @@ let SCHOLARSHIPS = [
     "provider": "Overseas Workers Welfare Administration (OWWA)",
     "type": "Merit-Based Scholarship",
     "category": "Government",
-    "amount": "Up to ₱60,000 + Covered",
-    "eligibility": "A scholarship program for qualified dependents of active OWWA members who demonstrate \nhigh academic performance and pass the qualifying examination.",
-    "deadline": "TBA",
-    "description": "A scholarship program for qualified dependents of active OWWA members who demonstrate \nhigh academic performance and pass the qualifying examination.",
+    "amount": "Up to ₱60,000 per school year",
+    "eligibility": "Qualified dependent of active OWWA member; incoming first-year college student (Category 1) or continuing student (Category 2); GWA of at least 80% or equivalent; age and other program-specific requirements apply; must pursue baccalaureate degree in the Philippines.",
+    "deadline": "Closed for SY 2026-2027 (Category 1 typically mid-September 2026); check official portal for next cycle",
+    "description": "Scholarship program for qualified dependents of active OWWA members who demonstrate high academic performance. Category 1 is primarily for incoming first-year students.",
     "website": "https://scholarship.owwa.gov.ph/",
-    "benefits": "One-time Cash Grant, Tuition Subsidy, Scholarship Renewal Support",
+    "application_link": "https://scholarship.owwa.gov.ph/",
+    "benefits": "Financial assistance of up to ₱60,000 per school year until completion of a 4- or 5-year baccalaureate course; scholarship renewal support subject to maintaining academic requirements",
     "min_gwa": 0.8,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
-    "priority_courses": [
-      "Accountancy",
-      "BS Agriculture",
-      "BS Architecture",
-      "BS Biology",
-      "BS Chemistry",
-      "BS Civil Engineering",
-      "BS Computer Engineering",
-      "BS Computer Science"
-    ],
-    "status": "TBA"
+    "priority_courses": [],
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 6,
@@ -2352,27 +2200,20 @@ let SCHOLARSHIPS = [
     "provider": "Overseas Workers Welfare Administration (OWWA)",
     "type": "Need-Based Scholarship",
     "category": "Government",
-    "amount": "₱20,000 + Covered",
-    "eligibility": "Provides educational assistance to qualified dependents of active OWWA members whose OFW parent has a limited annual salary.",
-    "deadline": "TBA",
+    "amount": "₱20,000 per school year",
+    "eligibility": "Qualified dependent of active OWWA member whose OFW parent has limited annual salary; GWA requirements apply; must pursue bachelor’s or associate degree in the Philippines.",
+    "deadline": "Closed for SY 2026-2027 (typically late September 2026); check official portal for next cycle",
     "description": "Provides educational assistance to qualified dependents of active OWWA members whose OFW parent has a limited annual salary.",
     "website": "https://scholarship.owwa.gov.ph/",
-    "benefits": "One-time Cash Grant, Tuition Subsidy, Scholarship Renewal Support",
+    "application_link": "https://scholarship.owwa.gov.ph/",
+    "benefits": "₱20,000 educational assistance per school year; renewal support subject to academic standing",
     "min_gwa": 0.8,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
-    "priority_courses": [
-      "BS Agriculture",
-      "BS Architecture",
-      "BS Biology",
-      "BS Civil Engineering",
-      "BS Computer Engineering",
-      "BS Computer Science",
-      "BS Electrical Engineering",
-      "BS Electronics Engineering"
-    ],
-    "status": "TBA"
+    "priority_courses": [],
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 7,
@@ -2380,27 +2221,22 @@ let SCHOLARSHIPS = [
     "provider": "Overseas Workers Welfare Administration (OWWA)",
     "type": "Government Scholarship",
     "category": "Government",
-    "amount": "Varies + Covered",
-    "eligibility": "Scholarship intended for qualified dependents of Overseas Filipino Workers pursuing Science \nand Technology courses.",
-    "deadline": "TBA",
-    "description": "Scholarship intended for qualified dependents of Overseas Filipino Workers pursuing Science \nand Technology courses.",
+    "amount": "Up to ₱60,000 per school year",
+    "eligibility": "Qualified dependents of Overseas Filipino Workers (or eligible migrant workers) pursuing Science and Technology courses; academic and income requirements apply as per current guidelines.",
+    "deadline": "Closed for SY 2026-2027; check official portal for next cycle",
+    "description": "Scholarship intended for qualified dependents of Overseas Filipino Workers pursuing Science and Technology courses.",
     "website": "https://scholarship.owwa.gov.ph/",
-    "benefits": "One-time Cash Grant, Tuition Subsidy, Scholarship Renewal Support",
+    "application_link": "https://scholarship.owwa.gov.ph/",
+    "benefits": "Financial assistance of up to ₱60,000 per school year; renewal support",
     "min_gwa": 0.8,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [
-      "BS Applied Mathematics",
-      "BS Applied Physics",
-      "BS Architecture",
-      "BS Biology",
-      "BS Chemical Engineering",
-      "BS Chemistry",
-      "BS Civil Engineering",
-      "BS Computer Engineering"
+      "Science and Technology priority courses as defined by the program"
     ],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 8,
@@ -2408,46 +2244,50 @@ let SCHOLARSHIPS = [
     "provider": "Land Bank of the Philippines (LANDBANK)",
     "type": "Need-Based Scholarship",
     "category": "Government",
-    "amount": "₱100,000 + Included",
-    "eligibility": "The Iskolar ng LANDBANK Program is a scholarship program that provides financial assistance \nto underprivileged but deserving students from LANDBANK's mandated sectors, particularl",
-    "deadline": "TBA",
-    "description": "The Iskolar ng LANDBANK Program is a scholarship program that provides financial assistance \nto underprivileged but deserving students from LANDBANK's mandated sectors, particularly the \nchildren or grandchildren of Agrarian Reform Beneficiaries (ARBs), small farmers, and fishers. \nThe program aims to develop future professionals through priority degree programs offered by \nselected State Universities and Colleges (SUCs).",
+    "amount": "Financial assistance package (typically includes cash grants and allowances; exact amounts vary by cycle)",
+    "eligibility": "Underprivileged but deserving students from LANDBANK’s mandated sectors, particularly children or grandchildren of Agrarian Reform Beneficiaries (ARBs), small farmers, and fishers; academic requirements and enrollment in priority degree programs at selected SUCs.",
+    "deadline": "TBA – check official LANDBANK site for current cycle",
+    "description": "Scholarship program providing financial assistance to underprivileged but deserving students from LANDBANK’s mandated sectors. Aims to develop future professionals through priority degree programs offered by selected State Universities and Colleges (SUCs).",
     "website": "https://www.landbank.com/about-landbank/iskolar-ng-landbank",
-    "benefits": "One-time Cash Grant, Living Allowance, Book Allowance, School Supplies Allowance, Uniform/Clothing Allowance, Cash Incentive, OJT/Internship Allowance, Employment Opportunity",
+    "application_link": "https://www.landbank.com/about-landbank/iskolar-ng-landbank",
+    "benefits": "Cash grants, living allowance, book/school supplies allowance, uniform allowance, possible OJT/internship support and employment pathways (details per cycle)",
     "min_gwa": 0.9,
     "max_income": 300000,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [
       "BS Agribusiness Management",
-      "BS Agricultural Engineering",
+      "BS Agricultural Engineering / Agricultural and Biosystems Engineering",
       "BS Animal Science",
       "BS Civil Engineering",
       "BS Data Science",
       "BS Food Technology",
       "BS Information Technology",
-      "Accountancy"
+      "Accountancy and related programs"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 9,
     "title": "BPI Foundation Pagpupugay Scholarship Program",
     "provider": "BPI Foundation, Inc.",
-    "type": "",
+    "type": "Special Scholarship",
     "category": "Foundation",
-    "amount": "Up to ₱100,000 + Covered",
-    "eligibility": "The Pagpupugay Scholarship Program honors the sacrifices of medical frontliners who \ncontracted COVID-19 or died in the line of duty by providing educational assistance to their \nq",
-    "deadline": "TBA",
-    "description": "The Pagpupugay Scholarship Program honors the sacrifices of medical frontliners who \ncontracted COVID-19 or died in the line of duty by providing educational assistance to their \nqualified next of kin pursuing a college education.",
+    "amount": "Up to ₱100,000 + coverage support (details per cycle)",
+    "eligibility": "Qualified next of kin of medical frontliners who contracted COVID-19 or died in the line of duty; pursuing college education.",
+    "deadline": "TBA – check official BPI Foundation site for current cycle",
+    "description": "Honors the sacrifices of medical frontliners by providing educational assistance to their qualified next of kin pursuing a college education.",
     "website": "https://www.bpifoundation.org/programs/special-projects/pagpupugay-scholarship",
-    "benefits": "One-time Cash Grant, Full Tuition Fee Coverage, Miscellaneous Fee Coverage, Living Allowance, Learning Materials Allowance, Tuition Subsidy",
+    "application_link": "https://www.bpifoundation.org/programs/special-projects/pagpupugay-scholarship",
+    "benefits": "Financial assistance including tuition support, living allowance, and related educational expenses (exact package per cycle announcements)",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 10,
@@ -2455,34 +2295,37 @@ let SCHOLARSHIPS = [
     "provider": "Andres P. Tamayo Sr. Foundation, Inc. (APTSFI)",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "See details",
-    "eligibility": "Provides educational assistance to deserving Filipino students from indigent families \nthrough scholarship grants, financial aid, and values formation training to help them \npursue",
-    "deadline": "TBA",
-    "description": "Provides educational assistance to deserving Filipino students from indigent families \nthrough scholarship grants, financial aid, and values formation training to help them \npursue and complete their college education.",
+    "amount": "See official details (financial aid and values formation support)",
+    "eligibility": "Deserving Filipino students from indigent families; academic and other requirements as published by the foundation.",
+    "deadline": "TBA – check foundation announcements",
+    "description": "Provides educational assistance to deserving Filipino students from indigent families through scholarship grants, financial aid, and values formation training to help them pursue and complete their college education.",
     "website": "https://andresptamayosrfoundation.com/about-us/",
-    "benefits": "Living Allowance, One-time Cash Grant, Mentoring Program, Skills Training",
+    "application_link": "https://andresptamayosrfoundation.com/about-us/",
+    "benefits": "Living allowance / financial aid, mentoring, skills training (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 11,
     "title": "MDFI Gawad Talino Scholarship Program",
     "provider": "Mercury Drug Foundation, Inc. (MDFI)",
-    "type": "Corporate Scholarship & Foundation Scholarship",
+    "type": "Corporate / Foundation Scholarship",
     "category": "Foundation",
-    "amount": "Full",
-    "eligibility": "The MDFI Gawad Talino Scholarship Program provides scholarship assistance to qualified incoming college freshmen who excelled in Mathematics and Science during Senior High School. ",
-    "deadline": "TBA",
-    "description": "The MDFI Gawad Talino Scholarship Program provides scholarship assistance to qualified incoming college freshmen who excelled in Mathematics and Science during Senior High School. It aims to encourage outstanding students to pursue higher education, maximize their potential, and become future leaders in their chosen fields.",
+    "amount": "Full tuition support (details per cycle)",
+    "eligibility": "Qualified incoming college freshmen who excelled in Mathematics and Science during Senior High School; other academic and documentary requirements apply.",
+    "deadline": "TBA – check official site",
+    "description": "Provides scholarship assistance to qualified incoming college freshmen who excelled in Mathematics and Science during Senior High School. Aims to encourage outstanding students to pursue higher education and become future leaders.",
     "website": "https://www.mercurydrugfoundation.org/scholarship.html",
-    "benefits": "Full Tuition Fee Coverage, One-time Cash Grant, Academic Support Services",
+    "application_link": "https://www.mercurydrugfoundation.org/scholarship.html",
+    "benefits": "Full tuition fee coverage and academic support services (exact package per cycle)",
     "min_gwa": null,
     "max_income": null,
-    "merit_based": false,
+    "merit_based": true,
     "financial_based": false,
     "priority_courses": [
       "BS Chemical Engineering",
@@ -2494,7 +2337,8 @@ let SCHOLARSHIPS = [
       "BS Information Technology",
       "BS Mathematics"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 12,
@@ -2502,27 +2346,22 @@ let SCHOLARSHIPS = [
     "provider": "Vivant Foundation",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "Full + Included",
-    "eligibility": "The Vivant STEM Scholarship is offered by the Vivant Foundation to support qualified students \nby helping them achieve their academic goals through scholarship assistance, and prov",
-    "deadline": "TBA",
-    "description": "The Vivant STEM Scholarship is offered by the Vivant Foundation to support qualified students \nby helping them achieve their academic goals through scholarship assistance, and provides \nfinancial assistance to deserving students who want to continue their education and pursue \nScience, Technology, Engineering, and Mathematics (STEM)-related courses.",
+    "amount": "Full tuition + allowances (details per cycle)",
+    "eligibility": "Qualified students pursuing STEM-related courses; academic and financial need requirements apply.",
+    "deadline": "TBA – check official site",
+    "description": "Supports qualified students in achieving academic goals through scholarship assistance for Science, Technology, Engineering, and Mathematics (STEM)-related courses.",
     "website": "https://vivantfoundation.org/stem-scholarship/",
-    "benefits": "Full Tuition Fee Coverage, Miscellaneous Fee Coverage, Book Allowance, Transportation Allowance, Living Allowance, Uniform/Clothing Allowance, Graduation Allowance, Internship Opportunity, Employment Opportunity",
+    "application_link": "https://vivantfoundation.org/stem-scholarship/",
+    "benefits": "Full tuition, miscellaneous fees, book, transportation, living and uniform allowances, graduation allowance, internship and employment opportunities (exact package per cycle)",
     "min_gwa": 0.9,
     "max_income": 300000,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [
-      "Accountancy",
-      "BS Psychology",
-      "BS Information Technology",
-      "BA Communication",
-      "Business Administration",
-      "Marketing",
-      "Logistics",
-      "Accountancy"
+      "STEM-related programs including selected Accountancy, Psychology, Information Technology, Communication, Business Administration, Marketing, Logistics"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 13,
@@ -2530,12 +2369,13 @@ let SCHOLARSHIPS = [
     "provider": "Moirasia Foundation",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "Up to ₱45,000 + Up to ₱5,000",
-    "eligibility": "The Moirasia Youth Excellence Scholarship is an educational assistance program of Moirasia \nFoundation, Inc. that supports deserving Filipino college students from financially chal",
-    "deadline": "TBA",
-    "description": "The Moirasia Youth Excellence Scholarship is an educational assistance program of Moirasia \nFoundation, Inc. that supports deserving Filipino college students from financially challenged \nfamilies. It provides financial assistance, leadership development, and career support to help \nscholars succeed in college and beyond.",
+    "amount": "Up to ₱45,000 + additional support (details per cycle)",
+    "eligibility": "Deserving Filipino college students from financially challenged families; academic requirements apply.",
+    "deadline": "TBA – check foundation announcements (often via Facebook)",
+    "description": "Educational assistance program supporting deserving Filipino college students from financially challenged families. Provides financial assistance, leadership development, and career support.",
     "website": "https://www.facebook.com/moirasiafoundation/",
-    "benefits": "Tuition Subsidy, Transportation Allowance, Skills Training, Internship Opportunity, Employment Opportunity, Review Support",
+    "application_link": "https://www.facebook.com/moirasiafoundation/",
+    "benefits": "Tuition subsidy, transportation allowance, skills training, internship and employment opportunities, review support (exact package per cycle)",
     "min_gwa": 0.9,
     "max_income": 300000,
     "merit_based": false,
@@ -2546,11 +2386,12 @@ let SCHOLARSHIPS = [
       "Business Economics",
       "Marketing Management",
       "Financial Management",
-      "Human Resource",
+      "Human Resource Management",
       "BA English",
       "BS Psychology"
     ],
-    "status": "TBA"
+    "status": "TBA – check official channels",
+    "active": true
   },
   {
     "id": 14,
@@ -2558,12 +2399,13 @@ let SCHOLARSHIPS = [
     "provider": "Charity First Foundation",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "Covered + Included",
-    "eligibility": "The Charity First Foundation Scholarship helps deserving students continue their education with \nfinancial support.",
-    "deadline": "TBA",
-    "description": "The Charity First Foundation Scholarship helps deserving students continue their education with \nfinancial support.",
+    "amount": "Tuition and allowance support (details per cycle)",
+    "eligibility": "Deserving students meeting academic and financial need criteria.",
+    "deadline": "TBA – check official site",
+    "description": "Helps deserving students continue their education with financial support.",
     "website": "https://www.charityfirst.ph/",
-    "benefits": "Tuition Subsidy, Transportation Allowance, Living Allowance, Uniform/Clothing Allowance, One-time Cash Grant, Skills Training, Leadership Development Program, Community Service Program, Academic Support Services, Mentoring Program",
+    "application_link": "https://www.charityfirst.ph/",
+    "benefits": "Tuition subsidy, transportation and living allowances, uniform allowance, one-time cash grant, skills training, leadership development, community service, academic support and mentoring (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": 300000,
     "merit_based": false,
@@ -2578,20 +2420,22 @@ let SCHOLARSHIPS = [
       "Software Engineering",
       "BS Computer Engineering"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 15,
     "title": "KCC Foundation Scholarship",
-    "provider": "Kankakee Community College (KCC) Foundation",
+    "provider": "KCC Foundation, Inc. (KCCFI)",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "1 + 1",
-    "eligibility": "The KCC Foundation Scholarship Program is an educational assistance initiative of KCC \nFoundation, Inc. (KCCFI) for qualified students in the SOCCSKSARGEN region. The \nscholarship ",
-    "deadline": "TBA",
-    "description": "The KCC Foundation Scholarship Program is an educational assistance initiative of KCC \nFoundation, Inc. (KCCFI) for qualified students in the SOCCSKSARGEN region. The \nscholarship is intended to help deserving students pursue college education by providing \nsupport for tuition, school fees, and other educational expenses.",
+    "amount": "Tuition and stipend support (details per cycle)",
+    "eligibility": "Qualified students in the SOCCSKSARGEN region; academic and financial need requirements apply.",
+    "deadline": "TBA – check foundation announcements",
+    "description": "Educational assistance initiative for qualified students in the SOCCSKSARGEN region to help deserving students pursue college education.",
     "website": "https://www.kcc.edu/foundation/",
-    "benefits": "Full Tuition Fee Coverage, Miscellaneous Fee Coverage, Monthly Stipend, Employment Opportunity",
+    "application_link": "https://www.kcc.edu/foundation/",
+    "benefits": "Full or partial tuition, miscellaneous fees, monthly stipend, possible employment pathways (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": 300000,
     "merit_based": false,
@@ -2606,7 +2450,8 @@ let SCHOLARSHIPS = [
       "BS Mechanical Engineering",
       "BS Information Technology"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 16,
@@ -2614,18 +2459,20 @@ let SCHOLARSHIPS = [
     "provider": "Philippine Army Finance Center Producers Integrated Cooperative (PAFCPIC)",
     "type": "Cooperative Scholarship",
     "category": "Cooperative",
-    "amount": "Covered + Covered",
-    "eligibility": "It provides financial support to qualified PAFCPIC members and their eligible dependents who \nwish to pursue a four- or five-year bachelor’s degree in recognized colleges and unive",
-    "deadline": "TBA",
-    "description": "It provides financial support to qualified PAFCPIC members and their eligible dependents who \nwish to pursue a four- or five-year bachelor’s degree in recognized colleges and universities \nacross the Philippines.  \nSince its launch in 1997, the program has helped more than 1,200 scholars complete their \ncollege education and build successful careers.",
+    "amount": "Tuition and stipend support (details per cycle)",
+    "eligibility": "Qualified PAFCPIC members and their eligible dependents pursuing a four- or five-year bachelor’s degree in recognized colleges and universities.",
+    "deadline": "TBA – check official cooperative channels",
+    "description": "Provides financial support to qualified PAFCPIC members and their eligible dependents. Since its launch in 1997, the program has helped more than 1,200 scholars complete their college education.",
     "website": "https://pafcpic.ph/",
-    "benefits": "Full Tuition Fee Coverage, Miscellaneous Fee Coverage, Monthly Stipend, Graduation Allowance, Cash Incentive, Review Support, Cash Incentive",
+    "application_link": "https://pafcpic.ph/",
+    "benefits": "Full or partial tuition and miscellaneous fees, monthly stipend, graduation allowance, review support, cash incentives (exact package per cycle)",
     "min_gwa": 0.89,
     "max_income": null,
     "merit_based": false,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 17,
@@ -2633,16 +2480,17 @@ let SCHOLARSHIPS = [
     "provider": "Tagum Cooperative",
     "type": "Cooperative Scholarship",
     "category": "Cooperative",
-    "amount": "See details",
-    "eligibility": "The Tagum Cooperative Academic Scholarship is an educational assistance program offered by \nTagum Cooperative for the children of its members. It aims to help qualified students pu",
-    "deadline": "TBA",
-    "description": "The Tagum Cooperative Academic Scholarship is an educational assistance program offered by \nTagum Cooperative for the children of its members. It aims to help qualified students pursue and \ncomplete their college education through financial support. \nThe scholarship is intended for academically deserving and financially challenged students who \nmeet the program’s eligibility requirements. It provides scholars with the opportunity to continue \ntheir studies, develop their knowledge and skills, and work toward achieving their academic and \ncareer goals.",
-    "website": "Tagum Cooperative Academic Scholarship 2026 | Application Now Open - PhilScholar",
-    "benefits": "One-time Cash Grant, Academic Support Services",
+    "amount": "See official details",
+    "eligibility": "Children of Tagum Cooperative members who are academically deserving and financially challenged; GWA and income requirements apply.",
+    "deadline": "TBA – check cooperative announcements",
+    "description": "Educational assistance program for the children of Tagum Cooperative members to help qualified students pursue and complete their college education.",
+    "website": "https://philscholar.com/tagum-cooperative-academic-scholarship/",
+    "application_link": "https://philscholar.com/tagum-cooperative-academic-scholarship/",
+    "benefits": "One-time cash grant and academic support services (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": 353000,
     "merit_based": false,
-    "financial_based": false,
+    "financial_based": true,
     "priority_courses": [
       "Accountancy",
       "Business Administration",
@@ -2653,7 +2501,8 @@ let SCHOLARSHIPS = [
       "BS Industrial Engineering",
       "BS Information Technology"
     ],
-    "status": "TBA"
+    "status": "TBA – check official channels",
+    "active": true
   },
   {
     "id": 18,
@@ -2661,59 +2510,62 @@ let SCHOLARSHIPS = [
     "provider": "Tagum Cooperative",
     "type": "Cooperative Scholarship",
     "category": "Cooperative",
-    "amount": "See details",
-    "eligibility": "The Tagum Cooperative Academic Scholarship is an educational assistance program offered by \nTagum Cooperative for the children of its members. It aims to help qualified students pu",
-    "deadline": "TBA",
-    "description": "The Tagum Cooperative Academic Scholarship is an educational assistance program offered by \nTagum Cooperative for the children of its members. It aims to help qualified students pursue and \ncomplete their college education through financial support. \nThe scholarship is intended for academically deserving and financially challenged students who \nmeet the program’s eligibility requirements. It provides scholars with the opportunity to continue \ntheir studies, develop their knowledge and skills, and work toward achieving their academic and \ncareer goals.",
+    "amount": "See official details",
+    "eligibility": "Children of Tagum Cooperative members meeting academic and financial criteria.",
+    "deadline": "TBA – check cooperative announcements",
+    "description": "Related educational assistance program of Tagum Cooperative for members’ children.",
     "website": "https://philscholar.com/tagum-cooperative-academic-scholarship/",
-    "benefits": "One-time Cash Grant, Academic Support Services",
+    "application_link": "https://philscholar.com/tagum-cooperative-academic-scholarship/",
+    "benefits": "Cash grant and academic support (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": 353000,
     "merit_based": false,
-    "financial_based": false,
+    "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official channels",
+    "active": true
   },
   {
     "id": 19,
     "title": "GrabScholar",
-    "provider": "Grab Philippines, supported by the GrabForGood Fund",
+    "provider": "Grab Philippines (supported by GrabForGood Fund)",
     "type": "Merit-Based Scholarship",
-    "category": "Foundation",
-    "amount": "1 + 1",
-    "eligibility": "A full-ride merit-based scholarship for incoming first-year college students in selected \ndegree programs. It covers tuition, school supplies, and monthly living support, and also ",
-    "deadline": "TBA",
-    "description": "A full-ride merit-based scholarship for incoming first-year college students in selected \ndegree programs. It covers tuition, school supplies, and monthly living support, and also \nincludes learning and development opportunities plus internship exposure.",
+    "category": "Foundation / Corporate",
+    "amount": "Full-ride support (tuition, school supplies, monthly living support)",
+    "eligibility": "Incoming first-year college students in selected degree programs; strong academic performance required.",
+    "deadline": "TBA – check official Grab Philippines community page for next cycle",
+    "description": "Full-ride merit-based scholarship for incoming first-year college students in selected degree programs. Includes learning and development opportunities plus internship exposure.",
     "website": "https://www.grab.com/ph/community/grabscholar-college-scholarship/",
-    "benefits": "Full Tuition Fee Coverage, Miscellaneous Fee Coverage, School Supplies Allowance, Monthly Stipend, Skills Training, Internship Opportunity",
+    "application_link": "https://www.grab.com/ph/community/grabscholar-college-scholarship/",
+    "benefits": "Full tuition, miscellaneous fees, school supplies allowance, monthly stipend, skills training, internship opportunity",
     "min_gwa": 0.9,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [
-      "Accountancy",
-      "Accounting",
-      "Accounting Technology",
+      "Accountancy / Accounting / Accounting Technology",
       "Marketing",
       "Financial Management",
       "BS Industrial Engineering",
       "Management Engineering",
       "BS Applied Mathematics"
     ],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 20,
     "title": "San Miguel Foundation Scholarship",
-    "provider": "San Miguel Foundation",
-    "type": "Need-Based Scholarship",
+    "provider": "San Miguel Foundation, Inc. (SMFI)",
+    "type": "Need-Based / Merit Scholarship",
     "category": "Foundation",
-    "amount": "Full or Partial + ₱5,000–₱10,000",
-    "eligibility": "The San Miguel Foundation Scholarship is an educational assistance program offered by \nSan Miguel Foundation, Inc. (SMFI), the corporate social responsibility arm of San Miguel \nCo",
-    "deadline": "TBA",
-    "description": "The San Miguel Foundation Scholarship is an educational assistance program offered by \nSan Miguel Foundation, Inc. (SMFI), the corporate social responsibility arm of San Miguel \nCorporation (SMC) – one of the largest and most diversified conglomerates in the \nPhilippines. \nThis scholarship supports academically excellent but financially challenged Filipino \nstudents pursuing degrees in fields relevant to San Miguel Corporation’s diverse business \ninterests, including engineering, food science, business, and agriculture. \nSan Miguel Foundation’s educational programs reflect the company’s commitment to \nnation-building through human capital development.",
+    "amount": "Full or partial tuition + stipend support (₱5,000–₱10,000 range noted in some cycles)",
+    "eligibility": "Academically excellent but financially challenged Filipino students pursuing degrees relevant to San Miguel Corporation’s business interests.",
+    "deadline": "TBA – check official announcements",
+    "description": "Educational assistance program supporting academically excellent but financially challenged Filipino students in fields relevant to San Miguel Corporation’s diverse business interests including engineering, food science, business, and agriculture.",
     "website": "https://www.chedscholar.org/san-miguel-foundation-scholarship/",
-    "benefits": "Tuition Subsidy, Monthly Stipend, Book Allowance, Miscellaneous Fee Coverage, OJT/Internship Allowance",
+    "application_link": "https://www.chedscholar.org/san-miguel-foundation-scholarship/",
+    "benefits": "Tuition subsidy, monthly stipend, book allowance, miscellaneous fee coverage, OJT/internship allowance (exact package per cycle)",
     "min_gwa": 0.88,
     "max_income": 400000,
     "merit_based": true,
@@ -2728,20 +2580,22 @@ let SCHOLARSHIPS = [
       "BS Food Science and Technology",
       "BS Agriculture"
     ],
-    "status": "TBA"
+    "status": "TBA – check official channels",
+    "active": true
   },
   {
     "id": 21,
     "title": "Security Bank Foundation Scholarship",
-    "provider": "Security Bank",
-    "type": "Merit-Based Scholarship & Need-Based Scholarship",
+    "provider": "Security Bank Foundation",
+    "type": "Merit-Based & Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "₱100,000 + Covered",
-    "eligibility": "A merit-and-need-based, externally funded scholarship for underprivileged but academically strong \ncollege students",
-    "deadline": "TBA",
-    "description": "A merit-and-need-based, externally funded scholarship for underprivileged but academically strong \ncollege students",
+    "amount": "₱100,000-level support + coverage (details per cycle)",
+    "eligibility": "Underprivileged but academically strong college students; merit and need criteria apply.",
+    "deadline": "TBA – check official announcements",
+    "description": "Merit-and-need-based, externally funded scholarship for underprivileged but academically strong college students.",
     "website": "https://collegesph.com/security-bank-foundation-scholarship/",
-    "benefits": "Monthly Stipend, Miscellaneous Fee Coverage, Monthly Stipend, Tuition Subsidy, Internship Opportunity, Networking and Professional Development",
+    "application_link": "https://collegesph.com/security-bank-foundation-scholarship/",
+    "benefits": "Monthly stipend, miscellaneous fee coverage, tuition subsidy, internship opportunity, networking and professional development (exact package per cycle)",
     "min_gwa": 0.93,
     "max_income": null,
     "merit_based": true,
@@ -2756,349 +2610,631 @@ let SCHOLARSHIPS = [
       "Management Engineering",
       "BS Applied Mathematics"
     ],
-    "status": "TBA"
+    "status": "TBA – check official channels",
+    "active": true
   },
   {
     "id": 22,
-    "title": "The Ateneo College Scholarship Program",
-    "provider": "Ateneo College",
+    "title": "Ateneo College Scholarship Program – Merit",
+    "provider": "Ateneo de Manila University",
     "type": "Merit-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Granted to outstanding applicants who have demonstrated exceptional academic achievement, \nleadership, and service.",
-    "deadline": "TBA",
-    "description": "Granted to outstanding applicants who have demonstrated exceptional academic achievement, \nleadership, and service.",
+    "amount": "See official Ateneo scholarship page (varies by award level)",
+    "eligibility": "Outstanding applicants who have demonstrated exceptional academic achievement, leadership, and service.",
+    "deadline": "Aligned with Ateneo admissions cycle – check official site",
+    "description": "Granted to outstanding applicants who have demonstrated exceptional academic achievement, leadership, and service.",
     "website": "https://www.ateneo.edu/college/scholarships",
-    "benefits": "",
+    "application_link": "https://www.ateneo.edu/college/scholarships",
+    "benefits": "Varies by specific merit award (tuition and related support)",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Ateneo admissions and scholarship pages for current cycle",
+    "active": true
   },
   {
     "id": 23,
-    "title": "The Ateneo College Scholarship Program",
-    "provider": "Ateneo College",
+    "title": "Ateneo College Scholarship Program – Need-Based / Financial Aid",
+    "provider": "Ateneo de Manila University",
     "type": "Need-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Provides partial or full financial assistance to students with demonstrated financial need. \nFinancial Aid Grants \nFor six decades now, the Ateneo College Scholarship Program conti",
-    "deadline": "TBA",
-    "description": "Provides partial or full financial assistance to students with demonstrated financial need. \nFinancial Aid Grants \nFor six decades now, the Ateneo College Scholarship Program continues to thrive for deserving \nbut financially challenged students. Financial Aid scholarships are awarded to students in all \ndegree programs of the University.",
+    "amount": "Partial or full financial assistance (varies)",
+    "eligibility": "Students with demonstrated financial need; academic standing requirements apply. Available across degree programs.",
+    "deadline": "Aligned with Ateneo admissions and financial aid application cycle – check official site",
+    "description": "Provides partial or full financial assistance to students with demonstrated financial need. Financial Aid scholarships are awarded to students in all degree programs of the University.",
     "website": "https://www.ateneo.edu/college/scholarships",
-    "benefits": "",
-    "min_gwa": 0.98,
+    "application_link": "https://www.ateneo.edu/college/scholarships",
+    "benefits": "Partial or full tuition and related support based on assessed need",
+    "min_gwa": null,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Ateneo admissions and scholarship pages for current cycle",
+    "active": true
   },
   {
     "id": 24,
-    "title": "The Ateneo College Scholarship Program",
-    "provider": "Ateneo College",
+    "title": "Ateneo College Scholarship Program – Athletic",
+    "provider": "Ateneo de Manila University",
     "type": "Athletic-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Offered to students who excel in sports and represent the University in athletic \ncompetitions. - Athletic Scholarships are awarded to student-athletes who have excelled in sports ",
-    "deadline": "TBA",
-    "description": "Offered to students who excel in sports and represent the University in athletic \ncompetitions. - Athletic Scholarships are awarded to student-athletes who have excelled in sports and \nacademics. Applicants who wish to enter Ateneo de Manila University with an Athletic \nScholarship must coordinate with the University Athletics Office (UAO). - Aside from being financially challenged, applicants must have outstanding athletic ability, \nand must be a recipient of awards in their specific sport",
+    "amount": "See official details (varies)",
+    "eligibility": "Student-athletes who excel in sports and represent the University; academic requirements apply. Coordinate with University Athletics Office.",
+    "deadline": "Coordinate with University Athletics Office (UAO) and admissions – check official site",
+    "description": "Offered to students who excel in sports and represent the University in athletic competitions. Applicants must have outstanding athletic ability and typically awards in their sport.",
     "website": "https://www.ateneo.edu/college/scholarships",
-    "benefits": "",
+    "application_link": "https://www.ateneo.edu/college/scholarships",
+    "benefits": "Varies by athletic award level",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Ateneo Athletics and scholarship pages",
+    "active": true
   },
   {
     "id": 25,
-    "title": "The Ateneo College Scholarship Program",
-    "provider": "Ateneo College",
+    "title": "Ateneo College Scholarship Program – Grant / Benefactor",
+    "provider": "Ateneo de Manila University",
     "type": "Grant-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Scholarship opportunities supported by benefactors, foundations, partner organizations, and \ninstitutional funds.",
-    "deadline": "TBA",
-    "description": "Scholarship opportunities supported by benefactors, foundations, partner organizations, and \ninstitutional funds.",
+    "amount": "See official details",
+    "eligibility": "As defined by specific benefactor, foundation, or institutional fund criteria.",
+    "deadline": "Varies by grant – check official Ateneo scholarship page",
+    "description": "Scholarship opportunities supported by benefactors, foundations, partner organizations, and institutional funds.",
     "website": "https://www.ateneo.edu/college/scholarships",
-    "benefits": "",
+    "application_link": "https://www.ateneo.edu/college/scholarships",
+    "benefits": "Varies by specific grant",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Ateneo scholarship page",
+    "active": true
   },
   {
     "id": 26,
-    "title": "The Ateneo College Scholarship Program",
-    "provider": "Ateneo College",
+    "title": "Ateneo College Scholarship Program – External",
+    "provider": "Ateneo de Manila University / External Organizations",
     "type": "External-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Programs administered by external organizations that may be availed of by Ateneo students.",
-    "deadline": "TBA",
+    "amount": "See details of specific external program",
+    "eligibility": "As defined by the external organization; Ateneo students may avail of these programs.",
+    "deadline": "Varies by external program",
     "description": "Programs administered by external organizations that may be availed of by Ateneo students.",
     "website": "https://www.ateneo.edu/college/scholarships",
-    "benefits": "",
+    "application_link": "https://www.ateneo.edu/college/scholarships",
+    "benefits": "Varies by external program",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Ateneo and external organization pages",
+    "active": true
   },
   {
     "id": 27,
-    "title": "DLSU Scholarships",
+    "title": "DLSU Star Scholarship Program",
     "provider": "De La Salle University",
     "type": "Merit-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "The Star Scholarship Program is an innovative program that is offered to high achieving \nfirst year undergraduate students from around the country.  This premier scholarship \nprogr",
-    "deadline": "TBA",
-    "description": "The Star Scholarship Program is an innovative program that is offered to high achieving \nfirst year undergraduate students from around the country.  This premier scholarship \nprogram  \nfeatures an integrated model that supports students through both \nundergraduate and graduate academic degree programs. - - \nThe Star Scholarship Program combines the prestige and the scope of a competitive \nbenefits package. \nStudents selected for the program have the unique opportunity to continue and earn a \nmaster’s degree or go into medicine proper (for BS Human Biology students) after \nfinishing their undergraduate degree at the De La Salle Medical and Health Sciences \nInstitute (DLSM-HSI), or enroll in the Tañada-Diokno School of Law (TDSOL) on full \nscholarship at no obligation to the scholars. F28",
+    "amount": "See official DLSU scholarship page (comprehensive benefits including possible graduate pathway)",
+    "eligibility": "High-achieving first-year undergraduate students from around the country; specific academic criteria apply.",
+    "deadline": "Aligned with DLSU admissions cycle – check official site",
+    "description": "Premier scholarship program offered to high-achieving first-year undergraduate students. Features an integrated model that can support students through undergraduate and into graduate academic degree programs or related pathways.",
     "website": "https://old.dlsu.edu.ph/admissions/scholarships/",
-    "benefits": "",
+    "application_link": "https://www.dlsu.edu.ph/admissions/scholarships/",
+    "benefits": "Competitive benefits package; specific coverage detailed on official DLSU scholarship pages",
     "min_gwa": null,
     "max_income": null,
-    "merit_based": false,
+    "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official DLSU admissions and scholarship pages for current cycle",
+    "active": true
   },
   {
     "id": 28,
-    "title": "DLSU Scholarships",
+    "title": "DLSU Vaugirard Scholarship Program",
     "provider": "De La Salle University",
     "type": "Merit-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "The scholarship program is named after Vaugirard, France, the location where St. John\nBaptist de La Salle founded his first novitiate. The house in Vaugirard became a refuge\nand a ",
-    "deadline": "TBA",
-    "description": "The scholarship program is named after Vaugirard, France, the location where St. John\nBaptist de La Salle founded his first novitiate. The house in Vaugirard became a refuge\nand a place where the Christian Brothers deepen their spirituality, strengthen their\nrelationships through fellowship and prayer, and renew the zeal to continue the mission of\nproviding free education for all.\nAs an important resource of the nation, De La Salle University continuously nurtures a\ncommunity of distinguished scholars. This scholarship program aims to create a positive\nsocial transformation in the grantees.\nBeginning AY 2012-2013, the University provides fifty (50) new scholarship slots every\nyear exclusively for students who graduated from Philippine public/science high schools.\nThis scholarship program offers students the chance to access a Lasallian education\nacross various baccalaureate programs at De La Salle University.\nThe application fee for all graduating public secondary school students is free. However,\napplicants must secure an examination permit which can be obtained upon submission of\nadmission requirements.\nScholars enrolled under the Human Biology (HUM-BIO) program of the College of\nScience are awarded full scholarships during their first two years of residency in DLSU.\nThe Grant will not cover payment of tuition and fees when they transfer to the De La Salle\nMedical Health and Sciences Institute (DLSM-HSI) campus for the continuation of their\nmedical degree.\nVaugirard scholars who are enrolled in baccalaureate-master's or BSMS programs will\nenjoy the benefit of the scholarship until they finish the program provided it is within the\nduration indicated in the curriculum checklist.",
+    "amount": "See official DLSU scholarship page",
+    "eligibility": "Students who graduated from Philippine public/science high schools; specific academic and other criteria apply. Application fee free for qualifying public secondary school graduates (examination permit required).",
+    "deadline": "Aligned with DLSU admissions cycle – check official site",
+    "description": "Scholarship program named after Vaugirard, France. Provides slots exclusively for students who graduated from Philippine public/science high schools. Aims to create positive social transformation in the grantees.",
     "website": "https://old.dlsu.edu.ph/admissions/scholarships/",
-    "benefits": "",
+    "application_link": "https://www.dlsu.edu.ph/admissions/scholarships/",
+    "benefits": "Scholarship support for baccalaureate programs; specific coverage on official pages. Special provisions for certain programs such as Human Biology.",
     "min_gwa": null,
     "max_income": null,
-    "merit_based": false,
+    "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official DLSU admissions and scholarship pages for current cycle",
+    "active": true
   },
   {
     "id": 29,
-    "title": "DLSU Scholarships",
-    "provider": "De La Salle University",
+    "title": "DLSU Gokongwei Grants Scholarship",
+    "provider": "De La Salle University / Gokongwei Brothers Foundation",
     "type": "Grant-Based Scholarship",
-    "category": "University",
-    "amount": "See details",
-    "eligibility": "Commitment to the task of nation-building through excellence and service in \neducation, the Gokongwei Brothers Foundation, Inc. will award the Gokongwei Grants  \nScholarship to stu",
-    "deadline": "TBA",
-    "description": "Commitment to the task of nation-building through excellence and service in \neducation, the Gokongwei Brothers Foundation, Inc. will award the Gokongwei Grants  \nScholarship to students who wish to pursue priority fields of study in any  undergraduate \nengineering degree program as offered by the College.",
+    "category": "University / Foundation",
+    "amount": "See official details",
+    "eligibility": "Students pursuing priority fields of study in undergraduate engineering degree programs offered by the College.",
+    "deadline": "Check official DLSU and GBF announcements",
+    "description": "Gokongwei Brothers Foundation, Inc. awards the Gokongwei Grants Scholarship to students who wish to pursue priority fields of study in undergraduate engineering programs.",
     "website": "https://old.dlsu.edu.ph/admissions/scholarships/",
-    "benefits": "",
+    "application_link": "https://www.dlsu.edu.ph/admissions/scholarships/",
+    "benefits": "Scholarship support for priority engineering programs (exact package per cycle)",
     "min_gwa": null,
     "max_income": null,
     "merit_based": false,
     "financial_based": false,
-    "priority_courses": [],
-    "status": "TBA"
+    "priority_courses": [
+      "Undergraduate engineering degree programs as prioritized by the grant"
+    ],
+    "status": "Check official DLSU and GBF pages",
+    "active": true
   },
   {
     "id": 30,
-    "title": "Undergraduate Scholarships at Mapúa",
+    "title": "Mapúa University Undergraduate Scholarships – Academic Merit",
     "provider": "Mapúa University",
     "type": "Merit-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Mapúa SHS student with a Semestral Weighted Average of 85% and above and no grade lower than 85% in any subject\nFreshman applicant who scored at least 80% in the Mapúa Program Plac",
-    "deadline": "TBA",
-    "description": "Mapúa SHS student with a Semestral Weighted Average of 85% and above and no grade lower than 85% in any subject\nFreshman applicant who scored at least 80% in the Mapúa Program Placement Assessment (MPASS)",
+    "amount": "See official Mapúa scholarship page",
+    "eligibility": "Mapúa SHS student with Semestral Weighted Average of 85% and above and no grade lower than 85%; or freshman applicant who scored at least 80% in the Mapúa Program Placement Assessment (MPASS); other criteria apply.",
+    "deadline": "Aligned with Mapúa admissions cycle – check official site",
+    "description": "Academic merit scholarships for qualified Mapúa SHS students and incoming freshmen based on academic performance and placement assessment results.",
     "website": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
-    "benefits": "",
+    "application_link": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
+    "benefits": "Varies by specific scholarship tier (tuition and related support)",
     "min_gwa": 0.85,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Mapúa admissions and scholarship pages",
+    "active": true
   },
   {
     "id": 31,
-    "title": "Undergraduate Scholarships at Mapúa",
+    "title": "Mapúa University Undergraduate Scholarships – Highest Honors",
     "provider": "Mapúa University",
     "type": "Merit-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Incoming freshmen who graduated \"with Highest Honors\" (GWA must be 98 and above) \nGraduated among the graduating batch of at least 60 students \nEnrolled in a Department of Educatio",
-    "deadline": "TBA",
-    "description": "Incoming freshmen who graduated \"with Highest Honors\" (GWA must be 98 and above) \nGraduated among the graduating batch of at least 60 students \nEnrolled in a Department of Education - accredited High School in the Philippines or abroad \nPassed the Mapúa Program Placement Assessment (MPASS)",
+    "amount": "See official Mapúa scholarship page",
+    "eligibility": "Incoming freshmen who graduated with Highest Honors (GWA 98 and above); graduated among a batch of at least 60 students; enrolled in a DepEd-accredited high school; passed the Mapúa Program Placement Assessment (MPASS).",
+    "deadline": "Aligned with Mapúa admissions cycle – check official site",
+    "description": "Scholarship for incoming freshmen who graduated with Highest Honors from a qualifying high school batch.",
     "website": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
-    "benefits": "",
+    "application_link": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
+    "benefits": "Varies by specific award",
     "min_gwa": 0.98,
     "max_income": null,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Mapúa admissions and scholarship pages",
+    "active": true
   },
   {
     "id": 32,
-    "title": "Undergraduate Scholarships at Mapúa",
+    "title": "Mapúa University Undergraduate Scholarships – ATY / IBFAP Combined",
     "provider": "Mapúa University",
     "type": "Merit-Based & Need-Based Scholarship",
     "category": "University",
-    "amount": "See details",
-    "eligibility": "Must be a graduate of any recognized Public Science High School in the Philippines \nAn incoming Freshman applicant who scored at least 70% in the Mapúa Program Placement \nAssessmen",
-    "deadline": "TBA",
-    "description": "Must be a graduate of any recognized Public Science High School in the Philippines \nAn incoming Freshman applicant who scored at least 70% in the Mapúa Program Placement \nAssessment (MPASS) \nMust be approved as an Income Based Financial Assistance Program (IBFAP) grantee \nStudents interested in applying for the ATY Scholarship must first apply for and be granted \na slot for IBFAP.",
+    "amount": "See official Mapúa scholarship page",
+    "eligibility": "Graduate of any recognized Public Science High School in the Philippines; incoming freshman who scored at least 70% in MPASS; must be approved as an Income Based Financial Assistance Program (IBFAP) grantee. Students interested in ATY Scholarship must first apply for and be granted a slot for IBFAP.",
+    "deadline": "Aligned with Mapúa admissions and financial assistance cycle – check official site",
+    "description": "Combined academic and need-based pathway for graduates of public science high schools who also qualify for income-based assistance.",
     "website": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
-    "benefits": "",
+    "application_link": "https://www.mapua.edu.ph/pages/admissions/mapua-scholarships/undergraduate",
+    "benefits": "Varies by combined award",
     "min_gwa": null,
     "max_income": null,
     "merit_based": true,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official Mapúa admissions and scholarship pages",
+    "active": true
   },
   {
     "id": 33,
-    "title": "CHED Merit Scholarship Program",
+    "title": "CHED Merit Scholarship Program (CMSP)",
     "provider": "Commission on Higher Education (CHED)",
     "type": "Merit-Based Scholarship",
     "category": "Government",
-    "amount": "See details",
-    "eligibility": "This program is intended for incoming/current first-year college students who have \ndemonstrated exceptional academic performance and potential for excellence in higher \neducation.",
-    "deadline": "TBA",
-    "description": "This program is intended for incoming/current first-year college students who have \ndemonstrated exceptional academic performance and potential for excellence in higher \neducation.  Specifically, the CMSP is open to student applicants who have achieved a minimum \nGeneral Weighted Average (GWA) of 93% or its equivalent in their Grade 12 report card.",
-    "website": "https://legacy.ched.gov.ph/merit-scholarship/",
-    "benefits": "",
+    "amount": "Full PESFA up to ₱120,000/year or Half PESFA up to ₱60,000/year (tuition, stipend, book/connectivity allowance) under recent cycles",
+    "eligibility": "Incoming/current first-year college students with minimum GWA of 93% (or higher for Full Merit in some cycles); combined annual family income not exceeding ₱500,000; must enroll in priority programs at recognized HEIs. Priority fields may vary by year (e.g., psychology, physical therapy, occupational therapy, speech-language pathology in recent cycles).",
+    "deadline": "Closed for AY 2026-2027 (previous cycle June–July 2026); check official CHED / regional CHEDRO announcements for next cycle",
+    "description": "Intended for incoming/current first-year college students who have demonstrated exceptional academic performance and potential for excellence in higher education.",
+    "website": "https://ched.gov.ph/",
+    "application_link": "https://ched.gov.ph/ (or regional CHEDRO portals; previous cycles used dedicated application links such as bit.ly/2026CMSPApplicationPortal)",
+    "benefits": "Tuition and other school fees, stipend, book/connectivity allowance (Full or Half PESFA packages as defined in the applicable Joint Memorandum Circular)",
     "min_gwa": 0.93,
     "max_income": 500000,
     "merit_based": true,
     "financial_based": false,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official CHED site / CHEDROs for next cycle",
+    "active": true
   },
   {
     "id": 34,
     "title": "CHED Tulong Dunong Program (TDP)",
-    "provider": "Commission on Higher Education (CHED) and Unified Student Financial Assistance System for \nTertiary Education (UniFAST).",
+    "provider": "Commission on Higher Education (CHED) and UniFAST",
     "type": "Need-Based Scholarship",
     "category": "Government",
-    "amount": "See details",
-    "eligibility": "The CHED Tulong Dunong Program (TDP) is one of the flagship financial assistance programs offered by the Commission on Higher Education (CHED) for Filipino students. It is designed",
-    "deadline": "TBA",
-    "description": "The CHED Tulong Dunong Program (TDP) is one of the flagship financial assistance programs offered by the Commission on Higher Education (CHED) for Filipino students. It is designed to help economically disadvantaged but deserving learners pursue higher education in public and private colleges or universities.",
-    "website": "https://legacy.ched.gov.ph/merit-scholarship/",
-    "benefits": "",
+    "amount": "See current CHED/UniFAST guidelines (financial assistance for tertiary education)",
+    "eligibility": "Economically disadvantaged but deserving Filipino students pursuing higher education in public and private colleges or universities; specific income and academic criteria apply.",
+    "deadline": "Varies – typically processed through HEIs or CHED regional offices; check current guidelines",
+    "description": "One of the flagship financial assistance programs of CHED designed to help economically disadvantaged but deserving learners pursue higher education.",
+    "website": "https://ched.gov.ph/",
+    "application_link": "https://ched.gov.ph/",
+    "benefits": "Financial assistance for tertiary education costs (exact amounts per current guidelines)",
     "min_gwa": null,
     "max_income": 400000,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Check official CHED / UniFAST guidelines for current cycle",
+    "active": true
   },
   {
     "id": 35,
     "title": "Ayala Foundation Scholarship",
-    "provider": "Ayala Foundation, Inc. was established in 1961 by Colonel Joseph McMicking and his wife, \nMercedes Zobel de Ayala.",
+    "provider": "Ayala Foundation, Inc.",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "See details",
-    "eligibility": "This private scholarship program supports deserving female students in public colleges and universities. It provides ₱40,000 per year and is renewable as long as the scholar mainta",
-    "deadline": "TBA",
-    "description": "This private scholarship program supports deserving female students in public colleges and universities. It provides ₱40,000 per year and is renewable as long as the scholar maintains good academic standing.",
-    "website": "Ayala Foundation Scholarships: Requirements, Benefits, And How To Apply - CHED Scholarship 2026 Philippines – Official Guide To Application & Requirements",
-    "benefits": "",
+    "amount": "₱40,000 per year (noted in some published descriptions); renewable subject to good academic standing",
+    "eligibility": "Deserving female students in public colleges and universities; other criteria as published by the foundation.",
+    "deadline": "TBA – check official Ayala Foundation announcements",
+    "description": "Private scholarship program supporting deserving female students in public colleges and universities.",
+    "website": "https://www.ayalafoundation.org/",
+    "application_link": "https://www.ayalafoundation.org/",
+    "benefits": "Annual financial support renewable with good academic standing (exact package per cycle)",
     "min_gwa": 0.85,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official site",
+    "active": true
   },
   {
     "id": 36,
-    "title": "Gokongwei Brothers Foundation (GBF)",
+    "title": "Gokongwei Brothers Foundation (GBF) STEM Scholarship",
     "provider": "Gokongwei Brothers Foundation (GBF)",
+    "type": "Need-Based / Merit Scholarship",
+    "category": "Foundation",
+    "amount": "₱80,000–₱120,000 per year (noted in published descriptions) + leadership training and internship opportunities",
+    "eligibility": "Outstanding college students pursuing priority STEM courses; financial need and academic criteria apply. Partnership with Gokongwei Group business units.",
+    "deadline": "TBA – check official GBF announcements",
+    "description": "Awarded in partnership with Gokongwei Group business units to outstanding college students pursuing priority STEM courses. Includes leadership training, internship opportunities, and potential employment within the Gokongwei Group after graduation.",
+    "website": "https://www.gbf.com.ph/ (or current GBF scholarship page)",
+    "application_link": "Check official GBF channels for current application portal",
+    "benefits": "Financial grants, leadership training, internship opportunities, potential employment pathways within Gokongwei Group companies",
+    "min_gwa": 0.85,
+    "max_income": 400000,
+    "merit_based": true,
+    "financial_based": true,
+    "priority_courses": [
+      "Priority STEM courses as defined by GBF"
+    ],
+    "status": "TBA – check official GBF site",
+    "active": true
+  },
+  {
+    "id": 37,
+    "title": "Megaworld Foundation Scholarship",
+    "provider": "Megaworld Foundation, Inc.",
     "type": "Need-Based Scholarship",
     "category": "Foundation",
-    "amount": "See details",
-    "eligibility": "Awarded by Gokongwei Brothers Foundation (GBF) in partnership with Gokongwei Group business units to outstanding college students pursuing priority STEM courses. Scholars receive f",
-    "deadline": "TBA",
-    "description": "Awarded by Gokongwei Brothers Foundation (GBF) in partnership with Gokongwei Group business units to outstanding college students pursuing priority STEM courses. Scholars receive financial grants of ₱80,000–₱120,000 per year, leadership training, internship opportunities, and potential employment within the Gokongwei Group (JG Summit, Cebu Pacific, Universal Robina, Robinsons Land, Robinsons Retail) after graduation. Over 352 graduates and 248 active scholars.",
-    "website": "GBF STEM Scholarship 2026–2027: Requirements, Benefits, and How to Apply",
-    "benefits": "",
+    "amount": "Full tuition fee + allowances",
+    "eligibility": "Academically deserving but financially challenged students; resident near Megaworld townships or projects preferred in some cycles; parents’ combined gross annual income typically not exceeding ₱400,000; GWA of at least 85% (or equivalent) with no subject below certain thresholds; enrolled or intending to enroll in partner schools (76 partner schools noted in past cycles).",
+    "deadline": "Closed for SY 2026-2027 (previous cycle August–September 2026); check official site for next cycle",
+    "description": "Supports academically deserving but financially challenged students. Scholars receive full tuition fee, allowances, and career opportunities in Megaworld, its subsidiaries, and affiliates after graduation.",
+    "website": "https://www.megaworldfoundation.com/scholarship_program",
+    "application_link": "https://www.megaworldfoundation.com/scholarship_program",
+    "benefits": "Full tuition fee coverage, allowances (via Foundation-issued ATM cards in past cycles), career opportunities in Megaworld group after graduation",
     "min_gwa": 0.85,
     "max_income": 400000,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
-  },
-  {
-    "id": 37,
-    "title": "Megaworld Foundation Incorporated",
-    "provider": "Megaworld Foundation Incorporated",
-    "type": "Need-Based Scholarship",
-    "category": "Foundation",
-    "amount": "See details",
-    "eligibility": "Megaworld Foundation supports 1,000 scholars in 76 partner schools in Metro Manila and \nseveral provinces. The scholars are provided with full tuition fee, allowances and career \no",
-    "deadline": "TBA",
-    "description": "Megaworld Foundation supports 1,000 scholars in 76 partner schools in Metro Manila and \nseveral provinces. The scholars are provided with full tuition fee, allowances and career \nopportunities in Megaworld, its subsidiaries, and affiliates after they finish their studies.",
-    "website": "https://philscholar.com/megaworld-foundation-scholarship/",
-    "benefits": "",
-    "min_gwa": 0.85,
-    "max_income": 300000,
-    "merit_based": false,
-    "financial_based": true,
-    "priority_courses": [],
-    "status": "TBA"
+    "status": "Closed for 2026-2027 – check official site for next cycle",
+    "active": true
   },
   {
     "id": 38,
     "title": "Iskolar ng Bayan Law (RA 10648)",
-    "provider": "Iskolar ng Bayan Law (RA 10648)",
-    "type": "Need-Based Scholarship",
+    "provider": "Government of the Philippines (implemented via SUCs / CHED)",
+    "type": "Need-Based / Merit Scholarship",
     "category": "Government",
-    "amount": "See details",
-    "eligibility": "Free tuition and miscellaneous fees for public high school valedictorians and \nsalutatorians.",
-    "deadline": "TBA",
-    "description": "Free tuition and miscellaneous fees for public high school valedictorians and \nsalutatorians.",
-    "website": "https://www.chedscholar.org/university-of-the-philippines-up-scholarship/",
-    "benefits": "",
+    "amount": "Free tuition and miscellaneous fees",
+    "eligibility": "Public high school valedictorians and salutatorians; other criteria as defined under the law and implementing guidelines.",
+    "deadline": "Aligned with SUC admissions and scholarship processes – check individual SUCs and CHED",
+    "description": "Provides free tuition and miscellaneous fees for public high school valedictorians and salutatorians under Republic Act No. 10648.",
+    "website": "https://www.ched.gov.ph/",
+    "application_link": "Apply through the State University or College of choice; check CHED and SUC scholarship offices",
+    "benefits": "Free tuition and miscellaneous fees",
     "min_gwa": 0.9,
     "max_income": null,
-    "merit_based": false,
+    "merit_based": true,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "Ongoing under the law – check specific SUCs",
+    "active": true
   },
   {
     "id": 39,
     "title": "Globe Telecom Scholarships",
     "provider": "Globe Telecom",
     "type": "Need-Based Scholarship",
-    "category": "Foundation",
-    "amount": "See details",
-    "eligibility": "The Globe Telecom Scholarships are part of Globe’s corporate social responsibility (CSR) \nprograms, aimed at supporting deserving Filipino students who demonstrate academic \nexcell",
-    "deadline": "TBA",
-    "description": "The Globe Telecom Scholarships are part of Globe’s corporate social responsibility (CSR) \nprograms, aimed at supporting deserving Filipino students who demonstrate academic \nexcellence and leadership potential but face financial challenges. Through education, \nGlobe invests in building a new generation of leaders and innovators who can contribute \nto both the telecommunications industry and national development.",
-    "website": "Globe Telecom Scholarships 2026: Complete Guide To Apply, Benefits, And Requirements - CHED Scholarship 2026 Philippines – Official Guide To Application & Requirements",
-    "benefits": "",
+    "category": "Corporate / Foundation",
+    "amount": "See current Globe CSR / scholarship announcements",
+    "eligibility": "Deserving Filipino students who demonstrate academic excellence and leadership potential but face financial challenges.",
+    "deadline": "TBA – check official Globe community / CSR pages",
+    "description": "Part of Globe’s corporate social responsibility programs aimed at supporting deserving Filipino students who demonstrate academic excellence and leadership potential but face financial challenges.",
+    "website": "https://www.globe.com.ph/",
+    "application_link": "Check official Globe Telecom CSR and scholarship announcements",
+    "benefits": "Educational support package (exact benefits per cycle announcements)",
     "min_gwa": 0.85,
     "max_income": null,
     "merit_based": false,
     "financial_based": true,
     "priority_courses": [],
-    "status": "TBA"
+    "status": "TBA – check official Globe channels",
+    "active": true
+  },
+  {
+    "id": 40,
+    "title": "Tzu Chi Philippines Educational Assistance Program",
+    "provider": "Tzu Chi Foundation Philippines",
+    "type": "Need-Based Scholarship",
+    "category": "Foundation",
+    "amount": "Financial aid + values and life skills class",
+    "eligibility": "First-year college students from low-income families in Metro Manila and nearby Rizal; enrolled in one of the partner state universities and colleges; GWA of at least 2.25 (approximately 82%) or better with no failing grades; regular student status.",
+    "deadline": "Closed for academic year 2026–2027; next call will be posted on the official page",
+    "description": "Helps first-year college students from low-income families stay in school, with financial aid and a class on values and life skills. Partner schools include University of the Philippines, Universidad de Manila, Philippine Normal University, Pamantasan ng Lungsod ng Maynila, Polytechnic University of the Philippines, and others.",
+    "website": "https://tzuchi.org.ph/apply/",
+    "application_link": "https://tzuchi.org.ph/apply/",
+    "benefits": "Financial assistance and participation in Humanities Class on values and life skills",
+    "min_gwa": 0.82,
+    "max_income": null,
+    "merit_based": false,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Closed for 2026-2027 – check official site for next call",
+    "active": true
+  },
+  {
+    "id": 41,
+    "title": "Bagong Pilipinas Merit Scholarship Program (BPMSP) – Higher Education Track",
+    "provider": "Commission on Higher Education (CHED) / National Government",
+    "type": "Merit-Based Scholarship",
+    "category": "Government",
+    "amount": "₱45,000 financial assistance (noted for SY 2026–2027 in regional announcements)",
+    "eligibility": "Incoming first-year college students; Filipino citizens who are among the top five students in their graduating class or have a Grade 12 GWA of at least 95 percent; must enroll in CHED-identified priority degree programs at qualified institutions.",
+    "deadline": "Varies by region / implementation – check CHED Regional Offices for current cycle details",
+    "description": "National merit scholarship program supporting academically deserving senior high school graduates pursuing college education in priority degree programs. Allocated slots nationwide with regional implementation.",
+    "website": "https://ched.gov.ph/",
+    "application_link": "Coordinate with CHED Regional Offices and participating SUCs",
+    "benefits": "Financial assistance (₱45,000 noted in 2026–2027 regional reports); exact package subject to program guidelines",
+    "min_gwa": 0.95,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": false,
+    "priority_courses": [
+      "CHED-identified priority degree programs (check current list)"
+    ],
+    "status": "Check CHED Regional Offices for current implementation status",
+    "active": true
+  },
+  {
+    "id": 42,
+    "title": "Japanese Government (MEXT) Undergraduate Scholarship",
+    "provider": "Ministry of Education, Culture, Sports, Science and Technology of Japan (MEXT) via Embassy of Japan in the Philippines",
+    "type": "Merit-Based International Scholarship",
+    "category": "International",
+    "amount": "Full scholarship: monthly allowance (approx. 117,000 yen), tuition waiver, economy airfare",
+    "eligibility": "Filipino citizen; under 25 years of age (specific birth date cut-offs apply per intake); completed or about to complete 12 years of schooling; strong academic standing; apply through the Japanese Embassy (embassy recommendation track) or certain university recommendation tracks.",
+    "deadline": "Embassy track for 2027 intake closed (May 2026); next cycle (for 2028 arrival) typically opens around April–May of the preceding year – check Embassy of Japan / JICC Philippines announcements",
+    "description": "Japanese Government scholarship for undergraduate studies in Japan. Covers a wide range of fields. Selection involves document screening, written examinations, and interview at the embassy level, followed by MEXT final selection.",
+    "website": "https://www.ph.emb-japan.go.jp/ (Embassy of Japan in the Philippines) / Study in Japan official resources",
+    "application_link": "Apply via Japan Information and Culture Center (JICC) of the Embassy of Japan in the Philippines when the call opens; official guidelines published annually",
+    "benefits": "Monthly stipend, full tuition and entrance fee waiver, round-trip economy airfare, possible preparatory education",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": false,
+    "priority_courses": [
+      "Wide range of undergraduate fields in humanities, social sciences, natural sciences, and engineering (as offered by accepting Japanese universities)"
+    ],
+    "status": "Next cycle TBA (typically April–May announcement for following year’s intake)",
+    "active": true
+  },
+  {
+    "id": 43,
+    "title": "Global Korea Scholarship (GKS) Undergraduate",
+    "provider": "National Institute for International Education (NIIED), Republic of Korea",
+    "type": "Merit-Based International Scholarship",
+    "category": "International",
+    "amount": "Full scholarship: tuition, monthly stipend, Korean language training support, round-trip airfare",
+    "eligibility": "Citizen of an eligible country (Philippines is included); under 25 years of age (born after the cut-off date published for the intake); high school graduate or expected graduate; strong academic record (typically 80% or equivalent minimum); parents not Korean citizens.",
+    "deadline": "Embassy track for 2027 intake closed (September 2026); university track deadlines vary by institution (often September–November); next cycle announcements expected in the following year – check Study in Korea / Korean Embassy",
+    "description": "Korean government scholarship for undergraduate degrees. Two main tracks: Embassy Track and University Track. Includes one year of Korean language training followed by the degree program.",
+    "website": "https://www.studyinkorea.go.kr/",
+    "application_link": "https://www.studyinkorea.go.kr/ (and Korean Embassy in the Philippines for embassy track when open)",
+    "benefits": "Full tuition, monthly living allowance, settlement allowance, Korean language training, medical insurance, round-trip airfare",
+    "min_gwa": 0.8,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": false,
+    "priority_courses": [
+      "Wide range of undergraduate programs at participating Korean universities (list published with each year’s guidelines)"
+    ],
+    "status": "Next cycle TBA – check Study in Korea and Korean Embassy announcements",
+    "active": true
+  },
+  {
+    "id": 44,
+    "title": "NTU ASEAN Undergraduate Scholarship",
+    "provider": "Nanyang Technological University (NTU), Singapore",
+    "type": "Merit-Based International Scholarship",
+    "category": "International",
+    "amount": "Subsidized tuition + living and accommodation allowances (exact amounts published per cycle)",
+    "eligibility": "Citizens of ASEAN countries other than Singapore (Filipinos eligible); strong academic record; apply for admission to NTU first; scholarship considered as part of or after the admission process; personal essay and recommendation typically required.",
+    "deadline": "Aligned with NTU undergraduate admissions cycle (often applications close in January for the following academic year); check NTU admissions page for exact dates",
+    "description": "Scholarship offered at Nanyang Technological University for citizens of ASEAN countries. Competitive selection based on academic excellence, activities, and leadership potential.",
+    "website": "https://www.ntu.edu.sg/",
+    "application_link": "https://www.ntu.edu.sg/admissions/undergraduate (apply for admission; scholarship form is part of or follows the application process)",
+    "benefits": "Tuition subsidy, living allowance, accommodation allowance, computer allowance (exact figures published by NTU per cycle)",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": false,
+    "priority_courses": [
+      "NTU undergraduate degree programs open to international applicants"
+    ],
+    "status": "Check NTU undergraduate admissions page for current application window",
+    "active": true
+  },
+  {
+    "id": 45,
+    "title": "Aboitiz Future Leaders Scholarship Program",
+    "provider": "Aboitiz Foundation",
+    "type": "Merit-Based / Need-Aware Scholarship",
+    "category": "Foundation",
+    "amount": "Full tuition at partner universities + monthly stipend (₱5,000–₱7,000 range noted in published descriptions) + book and other allowances",
+    "eligibility": "Primarily for incoming sophomore students enrolled in partner universities and identified degree programs; strong academic standing; willingness to participate in foundation activities and internship requirements. (Note: primarily sophomore intake, but relevant for students planning multi-year support.)",
+    "deadline": "Typically August–September application window through partner university scholarship offices – check Aboitiz Foundation and partner university pages",
+    "description": "Scholarship initiative by the Aboitiz Group supporting students at partner universities with financial assistance, leadership development, and a mandatory internship within the Aboitiz Group.",
+    "website": "https://www.aboitizfoundation.org/ (or current Aboitiz Future Leaders page)",
+    "application_link": "Through the scholarship offices of partner universities (Ateneo, DLSU, UP campuses, UST, Mapúa, and selected others)",
+    "benefits": "Full tuition, monthly stipend, book allowance, graduation and thesis support in some cycles, leadership training, mandatory internship at Aboitiz Group",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": true,
+    "priority_courses": [
+      "Degree programs identified by Aboitiz Foundation at partner universities"
+    ],
+    "status": "Check Aboitiz Foundation and partner university scholarship offices for current cycle",
+    "active": true
+  },
+  {
+    "id": 46,
+    "title": "CHED Special Equity Groups / Related Financial Assistance",
+    "provider": "Commission on Higher Education (CHED)",
+    "type": "Need-Based / Equity Scholarship",
+    "category": "Government",
+    "amount": "Up to ₱40,000 (SUCs/LUCs) or ₱60,000 (private HEIs) noted in recent equity-focused announcements",
+    "eligibility": "Incoming first-year college students belonging to Special Equity Groups including low-income families, Indigenous Peoples, persons with disabilities, solo parents and their children, and other designated groups; must enroll in eligible HEIs.",
+    "deadline": "Coordinate with CHED Regional Offices and chosen HEI – check current guidelines",
+    "description": "Financial assistance programs targeted at first-year college students from equity groups to expand access to higher education.",
+    "website": "https://ched.gov.ph/",
+    "application_link": "Through CHED Regional Offices and participating higher education institutions",
+    "benefits": "Financial assistance for tertiary education costs (amounts subject to current program guidelines and fund availability)",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": false,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Check CHED Regional Offices for current implementation",
+    "active": true
+  },
+  {
+    "id": 47,
+    "title": "University of the Philippines Scholarship Programs (various)",
+    "provider": "University of the Philippines System",
+    "type": "Merit-Based and Need-Based Scholarships",
+    "category": "University",
+    "amount": "Varies widely by specific program (tuition discounts, stipends, full support)",
+    "eligibility": "Depends on the specific UP scholarship or financial assistance program (e.g., socialized tuition, merit awards, donor-funded scholarships). Generally requires UP admission and meeting the criteria of the particular award.",
+    "deadline": "Aligned with UP admissions and individual scholarship application periods – check specific UP campus and Office of Scholarships and Student Services",
+    "description": "UP offers a range of merit-based, need-based, and donor-funded scholarships and financial assistance programs for undergraduate students across its constituent universities.",
+    "website": "https://www.up.edu.ph/ (and specific campus scholarship pages)",
+    "application_link": "Through the Office of Scholarships and Student Services (or equivalent) of the specific UP campus after admission",
+    "benefits": "Varies by program: tuition support, stipends, book allowances, and other forms of assistance",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Ongoing – check specific UP campus scholarship offices",
+    "active": true
+  },
+  {
+    "id": 48,
+    "title": "Cebu Province CP-GIFTS Scholarship",
+    "provider": "Provincial Government of Cebu",
+    "type": "Need-Based / Local Government Scholarship",
+    "category": "Government",
+    "amount": "Financial assistance for tertiary education (exact amounts per allocation and guidelines)",
+    "eligibility": "Incoming first-year college students (and some continuing) who are Cebu residents; GWA of at least 85% or equivalent; enrollment in public higher education institutions preferred in some allocations; other provincial guidelines apply.",
+    "deadline": "Varies by batch and office allocation – previous cycles had mid-year deadlines; check Provincial School Board / Capitol announcements",
+    "description": "Cebu Province-Grants Intended for Tertiary Students (CP-GIFTS) provides financial assistance slots allocated through the offices of the Governor, Vice Governor, and Provincial Board members.",
+    "website": "Check official Cebu Provincial Government / Provincial School Board announcements",
+    "application_link": "Through the Provincial School Board or designated Capitol offices when applications open",
+    "benefits": "Financial assistance for college education (exact package per current provincial guidelines)",
+    "min_gwa": 0.85,
+    "max_income": null,
+    "merit_based": false,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Check Cebu Provincial Government announcements for current batches",
+    "active": true
+  },
+  {
+    "id": 49,
+    "title": "Other Local Government / LGU Scholarships",
+    "provider": "Various Local Government Units (cities, municipalities, provinces)",
+    "type": "Need-Based / Local Scholarship",
+    "category": "Government",
+    "amount": "Varies widely by LGU",
+    "eligibility": "Typically residency in the LGU, academic performance, and financial need criteria set by the local government. Many LGUs prioritize public high school graduates or specific priority groups.",
+    "deadline": "Varies by LGU – often aligned with local budget cycles and enrollment periods",
+    "description": "Many cities, municipalities, and provinces in the Philippines maintain their own scholarship or educational assistance programs for resident students. Availability, amounts, and criteria differ significantly by locality.",
+    "website": "Check the official website or Facebook page of the specific city/municipal/provincial government",
+    "application_link": "Through the local Social Welfare and Development Office, Scholarship Office, or Sangguniang Kabataan / local education committee as designated by the LGU",
+    "benefits": "Varies: tuition assistance, monthly stipend, or one-time grants",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": false,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Ongoing in many LGUs – inquire locally",
+    "active": true
+  },
+  {
+    "id": 50,
+    "title": "Philippine Science High School Alumni / Related Pathways & Other Verified Foundation Scholarships",
+    "provider": "Various (PSHS System related pathways, additional foundations)",
+    "type": "Merit-Based / Need-Based",
+    "category": "Mixed",
+    "amount": "Varies",
+    "eligibility": "Depends on the specific program. PSHS graduates often have access to specialized pathways and partner scholarships; other foundations periodically open calls for academically strong or needy students.",
+    "deadline": "Varies widely",
+    "description": "Placeholder category for additional verified programs that open periodically, including those targeting Philippine Science High School graduates and other foundation-driven undergraduate support. Always verify current openings on official foundation and school sites.",
+    "website": "https://www.pshs.edu.ph/ (for PSHS-related) and individual foundation sites",
+    "application_link": "Check official announcements of the specific foundation or PSHS campus",
+    "benefits": "Varies by program",
+    "min_gwa": null,
+    "max_income": null,
+    "merit_based": true,
+    "financial_based": true,
+    "priority_courses": [],
+    "status": "Check individual program announcements",
+    "active": true
   }
 ];
 
@@ -3217,7 +3353,7 @@ function renderMatches(results){
       '<div class="flex justify-between items-start mb-2">'+
         '<div><div class="font-bold text-lg text-gray-800">'+esc(r.scholarship_name)+'</div>'+
         '<div class="text-sm text-gray-500">'+esc(r.provider)+' · '+esc(r.scholarship_type)+'</div></div>'+
-        '<span class="bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full">'+pct+'%</span>'+
+        '<span class="bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap shrink-0 flex-shrink-0">'+pct+'%</span>'+
       '</div>'+
       '<div class="text-sm text-emerald-600 mb-3">✓ '+esc(r.match_reason||'Eligible')+'</div>'+
       '<p class="text-sm text-gray-600 mb-3">'+esc(r.description)+'</p>'+
@@ -3662,6 +3798,7 @@ function renderReadinessTimeline(overall, weakest){
 }
 
 function restartReadiness(){
+  if(!window.confirm('Start the scholarship readiness checker again? Your current results will be replaced.')) return;
   document.getElementById('readinessResults').classList.add('hidden');
   document.getElementById('readinessForm').classList.remove('hidden');
   window.scrollTo({top:0, behavior:'smooth'});
@@ -3892,6 +4029,7 @@ function computeAndRenderResults(){
 }
 
 function restartTest(){
+  if(!window.confirm('Restart the career assessment? Your current answers will be cleared.')) return;
   answers = new Array(90).fill(null);
   document.getElementById('test-area').classList.remove('hidden');
   document.getElementById('results').classList.add('hidden');
@@ -3916,8 +4054,7 @@ function stepEscapeHtml(value){
 async function loadScholarshipsFromFirestore(){
   try{
     const snap=await db.collection('scholarships').get();
-    if(snap.empty) return;
-    SCHOLARSHIPS=snap.docs.map(doc=>{
+    if(snap.size >= 50) SCHOLARSHIPS=snap.docs.map(doc=>{
       const d=doc.data()||{};
       return {...d,id:d.id||doc.id,title:d.title||d.scholarship_name||d.name||'Scholarship',
         provider:d.provider||d.organization||'',type:d.type||d.scholarship_type||'Scholarship',
@@ -3926,6 +4063,7 @@ async function loadScholarshipsFromFirestore(){
         description:d.description||d.eligibility||'',website:d.website||d.official_website||'',
         benefits:d.benefits||[],priority_courses:d.priority_courses||[],status:d.status||d.application_status||'Open'};
     });
+    else console.info('Using the bundled 50-scholarship catalog until Firestore is seeded with all 50 records.');
     renderCatalog(SCHOLARSHIPS);renderFeatured();
     const count=document.getElementById('dashScholarships');if(count)count.textContent=SCHOLARSHIPS.length;
   }catch(err){
@@ -4022,6 +4160,10 @@ function renderStudentAnalytics(){
   const latest=attempts[0]||null;
   const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
   set('dashAttempts',attempts.length);set('dashAverage',avg===null?'—':avg+'%');
+  const emptyOverview=document.getElementById('overviewEmptyState');
+  const overviewContent=document.getElementById('overviewDashboardContent');
+  if(emptyOverview)emptyOverview.classList.toggle('hidden',attempts.length>0);
+  if(overviewContent)overviewContent.classList.toggle('hidden',attempts.length===0);
   set('analyticsAttempts',attempts.length);set('analyticsAverage',avg===null?'—':avg+'%');set('analyticsBest',best===null?'—':best+'%');
   const donut=document.getElementById('dashDonut');if(donut)donut.style.setProperty('--score',(latest?Number(latest.percentage||0):0)+'%');
   set('dashLatestScore',latest?Math.round(latest.percentage||0)+'%':'—');
@@ -4405,6 +4547,7 @@ function renderExamImprovement(entries, result){
   box.innerHTML = html;
 }
 function retakeStepExam(){
+  if(!window.confirm('Clear your previous exam attempt and start a new one? Your saved in-progress answers will be removed.')) return;
   clearStepExamProgress();
   stepExamQuestions=[];stepExamAnswers={};stepExamFlags=new Set();stepExamEndAt=null;
   showExamPanel('examIntro');
